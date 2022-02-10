@@ -13,12 +13,9 @@ let comment_item_container = document.querySelector("#content-item-comment-item-
 
 
 like_button.addEventListener("click", function(){
-    let url = new URL(window.location.origin + "/instagif/like/")
+    let url = new URL(window.location.origin + "/instagif/like/" + image_id + "/")
     let img = like_button.querySelector(".content-item-action-item-img")
     let like_count = document.querySelector("#like-count-" + image_id)
-    let form_data = new FormData()
-    form_data.append("image_id", image_id)
-    console.log(image_id)
 
     fetch(url, {
         method: "POST",
@@ -27,7 +24,6 @@ like_button.addEventListener("click", function(){
             "X-Requested-With": "XMLHTTPRequest"
         },
         mode: "same-origin",
-        body: form_data
     })
     .then((res) => res.json())
     .then((data) => {
@@ -50,10 +46,8 @@ like_button.addEventListener("click", function(){
 })
 
 save_button.addEventListener("click", () => {
-    let url = new URL(window.location.origin + "/instagif/save/")
+    let url = new URL(window.location.origin + "/instagif/save/" + image_id + "/")
     let img = save_button.querySelector(".content-item-action-item-img")
-    let form_data = new FormData()
-    form_data.append("image_id", image_id)
 
     fetch(url, {
         method: "POST",
@@ -62,7 +56,6 @@ save_button.addEventListener("click", () => {
             "X-Requested-With": "XMLHTTPRequest"
         },
         mode: "same-origin",
-        body: form_data
     })
     .then((res) => res.json())
     .then((data) => {
@@ -171,4 +164,3 @@ comment_form.addEventListener("submit", function(e){
 
 })
 
-console.log("jakdjkasjdksajdl")
