@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div id="super-container">
+        <div id="login-box">
+            <div id="logo-container"><a id="index-link" href="{% url 'instagif:index' %}">Instagif</a></div>
+
+            <div id="form-container">
+                <form id="login-form" action="{% url 'instagif:login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-input-container">
+                        <input id="form-email" class="form-input" type="text" name="email">
+                        <span id="email-placeholder" class="input-placeholder input-placeholder-big">Email</span>
+                    </div>
+                    <div id="form-input-container-password" class="form-input-container">
+                        <input id="form-password" class="form-input" type="password" name="password">
+                        <span id="password-placeholder" class="input-placeholder input-placeholder-big">Password</span>
+                    </div>
+                    <span id="error-message">Email or password is wrong.</span>
+
+                    <button id="form-submit" class="form-input" type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="signup-link-container">
+            <p id="signup-link-text">Don't have an account? <a class="signup-link" href="{% url 'instagif:signup' %}">Sign up</a></p>
+        </div>
+    </div>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'instagif/login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <script src="{% static 'instagif/login.js' %}"></script>
+
+
+
+</body>
+</html>

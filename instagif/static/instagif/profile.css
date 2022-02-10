@@ -1,0 +1,175 @@
+#base-content-container{
+    position: relative;
+}
+
+
+#option-bar-container{
+    height: 50px;
+}
+
+#option-bar-flex{
+    width: 480px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.option-bar-item{
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+}
+
+.option-bar-item-button{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#selection-line{
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    background-color: cornflowerblue;
+    border-radius: 2vw;
+    transition-duration: 500ms;
+}
+
+.selection-line-left50{
+    left: 50%;
+}
+
+.selection-line-left0{
+    left: 0;
+}
+
+.selected-item{
+    color: cornflowerblue;
+    font-weight: 1000;
+}
+
+.left-0{
+    left: 0;
+}
+
+.left-100{
+    left: 100%;
+}
+
+.left-min100{
+    left: -100%;
+}
+
+.display-inline-block{
+    display: inline-block;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+#profile-saved-images-container{
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    transition-duration: 1000ms;
+}
+
+.bottom-550{
+    bottom: 550px; /* equal to form's height */
+}
+
+.bottom-0{
+    bottom: 0;
+}
+
+#saved-images-content{
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    transition-duration: 1000ms;
+    transition-property: left;
+}
+
+#profile-content{
+    width: 100%;
+    padding-top: 60px;
+    position: relative;
+    box-sizing: border-box;
+    transition-duration: 1000ms;
+}
+
+
+#profile-form{
+    width: 400px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#image-input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+
+#avatar-placeholder{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+#avatar-placeholder{
+    margin-bottom: 10px;
+}
+
+#avatar-input{
+    border: 1px solid cornflowerblue;
+    border-radius: 8px;
+}
+
+.input-item{
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 30px;
+    border: 1px solid cornflowerblue;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+#change-password-checkbox{
+    width: 20px;
+}
+
+
+#submit-button{
+    width: 100px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: rgb(0, 149, 246);
+    color: #FFFFFF;
+    font-weight: 1000;
+}

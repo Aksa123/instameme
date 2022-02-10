@@ -1,0 +1,54 @@
+
+{% load static %}
+<div class="reel-content-container" id="content_{{ image.id }}">
+    <input class="uploader-id" type="hidden" name="uploader-id" value="{{ image.user_id }}">
+    <input class="uploader-id-{{ image.user_id }}" type="hidden" name="uploader-id-{{ image.user_id }}" value="{{ image.user_id }}">
+    {% if image.trigger %}
+    <input class="trigger" id="trigger_{{ image.id }}" type="hidden" name="trigger" value="{{ image.trigger }}">
+    {% endif %}
+    <img class="content-img" src="{{ image.image.url }}" alt="content img">
+    <div class="info-container">
+        <div class="detail-container">
+            <div class="detail-top-container">
+                <a href="{% url 'instagif:user_detail' image.user.id %}"><img src="{{ image.user.person.avatar.url }}" alt="avatar image" class="avatar"></a>
+                <a href="{% url 'instagif:user_detail' image.user.id %}"><div class="username">{{ image.user.person.name }}</div></a>
+                {% if image.is_following %}
+                <button class="follow following"><i class="bi bi-check-all"></i> <span class="follow-text">Following</span></button>
+                {% else %}
+                <button class="follow"><i class="bi bi-plus"></i> <span class="follow-text">Follow</span></button>
+                {% endif %}
+            </div>
+            <div class="title">{{ image.title }}</div>
+            <div class="description" id="description-content-{{ image.id.hex }}">
+                {{ image.description_short.short }}{% if image.description_short.show_more == True %} <span class="show-more">...more</span><span class="description-long display-none">{{ image.description_short.long }} <span class="show-less">...less</span></span>{% endif %}
+            </div>
+        </div>
+        <div class="action-container">
+            <div class="like-container action-item-container">
+                <button class="like-button action-item-button">
+                    {% if image.is_liked %}
+                    <img src="{% static 'instagif/liked.png' %}" alt="" class="action-img like-img">
+                    {% else %}
+                    <img src="{% static 'instagif/unliked.png' %}" alt="" class="action-img like-img">
+                    {% endif %}
+                </button>
+                <div class="like-count action-item-count">{{image.like_count}}</div>
+            </div>
+            <div class="comment-container action-item-container">
+                <a class="comment-button action-item-button" href="{% url 'instagif:detail' image.id.hex %}">
+                    <img src="{% static 'instagif/comment.png' %}" alt="" class="action-img comment-img">
+                </a>
+                <div class="comment-count action-item-count">{{ image.comment_count }}</div>
+            </div>
+            <div class="save-container action-item-container">
+                <button class="save-button action-item-button">
+                    {% if image.is_saved %}
+                    <img src="{% static 'instagif/saved.png' %}" alt="" class="action-img save-img">
+                    {% else %}
+                    <img src="{% static 'instagif/unsaved.png' %}" alt="" class="action-img save-img">
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

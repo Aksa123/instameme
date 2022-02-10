@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Page</title>
+</head>
+<body>
+    {% load static %}
+    <div id="super-container">
+        <div id="top-bar-container">
+            <div id="top-bar">
+                <a id="logo" class="top-bar-item" href="{% url 'instagif:index' %}" >Instagif</a>
+                <div id="search" class="top-bar-item">
+                    <div id="search-input-container">
+                        <input type="text" id="search-input" value="{{ query }}" >
+                        <a id="search-button" href="https://en.wikipedia.org">
+                            <img src="{% static 'instagif/search.png' %}" alt="" class="top-bar-item-img">
+                        </a>
+                    </div>
+                </div>
+                <div id="account" class="top-bar-item">
+                    <button id="account-button" class="top-bar-item-button">
+                        <img src="{% static 'instagif/account.png' %}" alt="avatar" class="top-bar-item-img">
+                    </button>
+                    
+                    <div id="account-dropdown" class="account-active-background display-none">
+                        {% if person %}
+                        <a href="#" id="account-profile" class="account-dropdown-item-link">
+                            <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                            <p class="account-dropdown-item-text">Profile</p>
+                        </a>
+                        <a href="#" class="account-dropdown-item-link">
+                            <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                            <p class="account-dropdown-item-text">Saved Gifs</p>
+                        </a>
+                        <hr class="account-dropdown-line">
+                        <form id="logout-form" action="{% url 'instagif:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button id="logout-button" class="account-dropdown-item-link" type="submit">
+                                <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Log out</p>
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{% url 'instagif:login' %}" id="account-login" class="account-dropdown-item-link">
+                            <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                            <p class="account-dropdown-item-text">Log in</p>
+                        </a>
+                        {% endif %}
+                    </div>
+                    
+
+
+
+                </div>
+            </div>
+        </div>
+
+        {% csrf_token %}
+        <div id="master-content-container">
+            <!-- content start
+            content end -->
+
+        </div>
+        
+    </div>
+
+
+
+    <input type="hidden" id="init-url" value="{{ init_url }}">
+    <link rel="stylesheet" href="{% static 'instagif/base.css' %}">
+    <link rel="stylesheet" href="{% static 'instagif/master.css' %}">
+    <script src="{% static 'instagif/master.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+
+
+</body>
+</html>

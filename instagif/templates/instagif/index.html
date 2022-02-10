@@ -1,0 +1,71 @@
+{% extends "instagif/base.html" %}
+
+{% block content %}
+
+{% load static %}
+<div id="selection">
+    <div id="selection-arrow-container-left" class="selection-arrow-container">
+        <button id="selection-arrow-left" class="selection-arrow-button">
+            <img src="{% static 'instagif/arrow-left.png' %}" alt="arrow-left" class="selection-arrow-img">
+        </button>
+    </div>
+    
+    <div id="selection-container-extra">
+        <div id="selection-container">
+            <div class="selection-item">
+                <a href="{% url 'instagif:reel_all' %}" class="selection-item-link">
+                    <img src="{% static 'instagif/gallery.png' %}" alt="" class="selection-item-img">
+                    <span class="selection-item-name">ALL REELS</span>
+                </a>
+            </div>
+
+            {% for following_item in following %}
+            <div class="selection-item">
+                <a href="{% url 'instagif:reel' following_item.following_id %}" class="selection-item-link">
+                    <img src="{{ following_item.following.person.avatar.url }}" alt="" class="selection-item-img">
+                    <span class="selection-item-name">{{ following_item.following.person.trimmed_name }}</span>
+                </a>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div id="selection-arrow-container-right" class="selection-arrow-container">
+        <button id="selection-arrow-right" class="selection-arrow-button">
+            <img src="{% static 'instagif/arrow-right.png' %}" alt="arrow-right" class="selection-arrow-img">
+        </button>
+    </div>
+</div>
+
+
+<div id="content">
+    {% csrf_token %}
+    {% if user %}
+    <input id="user-id" value="{{ user.id }}" type="hidden">
+    {% else %}
+    <input id="user-id" value="none" type="hidden">
+    {% endif %}
+
+    {% for item in images %}
+        {% include "instagif/index_component.html" %}
+
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+    
+    
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/index.css' %}">
+<script src="{% static 'instagif/components.js' %}"></script>
+<script type="module" src="{% static 'instagif/index.js' %}"></script>
+
+{% endblock %}
+
+    
+{% block attributions %}
+<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+{% endblock %}

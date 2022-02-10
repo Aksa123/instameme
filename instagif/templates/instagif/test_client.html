@@ -1,0 +1,38 @@
+
+{% csrf_token %}
+<button id="test1">Click for data</button>
+
+<div id="ja">
+
+
+</div>
+
+
+<script>
+    let test1 = document.querySelector("#test1")
+    let csrf = document.querySelector("[name=csrfmiddlewaretoken]").value
+    let ja= document.querySelector("#ja")
+
+    test1.addEventListener("click", function(){
+        fetch("/instagif/master/", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": csrf,
+                "X-Requested-With": "XMLHTTPRequest"
+            },
+            mode: "same-origin"
+
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            dec = decodeURI(data.html)
+            ja.innerHTML += dec
+            
+        
+        })
+
+
+    })
+
+
+</script>

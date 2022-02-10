@@ -1,0 +1,23 @@
+{% extends "instagif/admin.html" %}
+
+{% block content %}
+{% load static %}
+<form action="{% url 'instagif:admin_tag_edit' tag.id%}" method="POST" id="edit-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-container">
+        <label for="name">Username</label>
+        <input type="text" name="name" id="name" class="input" value="{{ tag.name }}" placeholder="Name..." required>
+    </div>
+
+    <div id="submit-container" class="input-container">
+        <button id="submit" type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/admin_user_edit.css' %}">
+<script src="{% static 'instagif/admin_tag_edit.js' %}"></script>
+{% endblock %}

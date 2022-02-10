@@ -1,0 +1,55 @@
+{% extends "instagif/admin.html" %}
+
+{% block content %}
+{% load static %}
+<form action="{% url 'instagif:admin_image_edit' image.id %}" method="POST" id="edit-form" enctype="multipart/form-data" required>
+    {% csrf_token %}
+    <div class="input-container">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="input" value="{{ image.title }}" placeholder="Title..." required>
+    </div>
+
+    <div class="input-container">
+        <label for="user">Uploader</label>
+        <select id="user" class="form-select" aria-label="Default select example" required>
+            {% for user in users %}
+            {% if user.id == image.user.id %}
+            <option value="{{ user.id }}" selected>{{ user.person.name }} (ID: {{ user.id }})</option>
+            {% else %}
+            <option value="{{ user.id }}">{{ user.person.name }} (ID: {{ user.id }})</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+    </div>
+    <div id="avatar-preview-container" >
+        <img id="avatar-preview" alt="image preview" src="{{ image.image.url }}">
+    </div>
+    <div class="input-container">
+        <label for="avatar">Image</label>
+        <input type="file" name="avatar" id="avatar"  accept="image/*" >
+    </div>
+    <div class="input-container">
+        <label for="tags">Tags</label>
+        <select id="tags" class="form-select" multiple aria-label="Default select example" required>
+            {% for tag in tags %}
+            {% if tag.selected == True %}
+            <option value="{{ tag.id }}" selected>{{ tag.name }}</option>
+            {% else %}
+            <option value="{{ tag.id }}" >{{ tag.name }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+    </div>
+
+    <div id="submit-container" class="input-container">
+        <button id="submit" type="submit">Update</button>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/admin_user_edit.css' %}">
+<script src="{% static 'instagif/admin_image_edit.js' %}"></script>
+{% endblock %}

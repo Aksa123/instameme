@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagif - index</title>
+</head>
+<body>
+
+    {% load static %}
+
+    
+    <div id="super-container">
+        <div id="top-bar-container">
+            <div id="top-bar">
+                <a id="logo" class="top-bar-item" href="{% url 'instagif:index' %}" >Instagif</a>
+                <div id="search" class="top-bar-item">
+                    <div id="search-input-container">
+                        <input type="text" id="search-input" value="{{ query }}" placeholder="Search..." >
+                        <a id="search-button" href="https://en.wikipedia.org">
+                            <img src="{% static 'instagif/search.png' %}" alt="search img" class="top-bar-item-img">
+                        </a>
+                    </div>
+
+                    <div id="small-search-input-container">
+                        <button id="small-search-button">
+                            <img src="{% static 'instagif/search.png' %}" alt="small search img" class="top-bar-item-img">
+                        </button>
+                    </div>
+
+                    <div id="small-search-input-popup-container" class="small-search-popup-inactive">
+                        <button id="cancel-button">
+                            <img src="{% static 'instagif/cancel.png' %}" alt="cancel image" id="cancel-img">
+                        </button>
+                        <div id="small-search-input-popup-button-container">
+                            <input type="text" id="small-search-input" value="{{ query }}" placeholder="Search..." >
+                            <a id="small-search-button-popup" href="#">
+                                <img src="{% static 'instagif/search.png' %}" alt="" class="top-bar-item-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="add-account-container">
+                    {% if request.user.is_authenticated %}
+                    <div id="add">
+                        <a id="add-link" href="{% url 'instagif:upload' %}">
+                            <button id="add-button">
+                                <img src="{% static 'instagif/upload.png' %}" alt="" class="top-bar-item-img">
+                            </button>
+                        </a>
+                    </div>
+                    {% endif %}
+
+
+                    <div id="account" class="top-bar-item">
+
+                        <button id="account-button" class="top-bar-item-button">
+                            {% if request.user.is_authenticated %}
+                            <img src="{{ request.user.person.avatar.url }}" alt="avatar" id="avatar" class="top-bar-item-img border-radius-50">
+                            {% else %}
+                            <img src="{% static 'instagif/account.png' %}" id="avatar" alt="avatar" class="top-bar-item-img">
+                            {% endif %}
+                        </button>
+                        
+                        <div id="account-dropdown" class="account-active-background display-none">
+                            <div id="account-dropdown-triangle"></div>
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'instagif:profile' %}" id="account-profile" class="account-dropdown-item-link">
+                                <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Profile</p>
+                            </a>
+                            <a href="{% url 'instagif:profile' %}#saved-gifs-content" class="account-dropdown-item-link">
+                                <img src="{% static 'instagif/unsaved.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Saved Gifs</p>
+                            </a>
+                            <hr class="account-dropdown-line">
+                            <form id="logout-form" action="{% url 'instagif:logout' %}" method="POST">
+                                {% csrf_token %}
+                                <button id="logout-button" class="account-dropdown-item-link" type="submit">
+                                    <img src="{% static 'instagif/logout.png' %}" alt="" class="account-dropdown-item-img">
+                                    <p class="account-dropdown-item-text">Log out</p>
+                                </button>
+                            </form>
+                            {% else %}
+                            <a href="{% url 'instagif:login' %}" id="account-login" class="account-dropdown-item-link">
+                                <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Log in</p>
+                            </a>
+                            {% endif %}
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay-inactive"></div>
+
+        <div id="base-content-container">
+            <!-- Content -->
+            {% block content %}
+            <h2>No content available, or an error occured :(</h2>
+            {% endblock %}
+        </div>
+    
+    
+
+
+        <!-- Attributions-->
+        {% block footer %}
+        <!-- <footer id="footer">
+            <div id="footer-about" class="footer-item">
+                <a href="#">About</a>
+            </div>
+            <div id="footer-contact" class="footer-item">
+                <a href="#">Contact</a>
+            </div>
+            <div id="footer-attributions" class="footer-item">
+                <a href="#">Attributions</a>
+            </div>
+        </footer> -->
+        {% endblock %}
+    
+    
+    </div>
+
+
+
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'instagif/base.css' %}">
+    <script src="{% static 'instagif/base.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+    {% block style %}
+    {% endblock %}
+
+
+
+    
+
+
+
+</body>
+</html>

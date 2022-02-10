@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page title</title>
+</head>
+<body>
+    {% load static %}
+
+    <div class="builder-flexbox">
+        <div class="builder-grid">
+            <div class="grid">
+                <!-- <div class="grid-item grid-item-1">1</div>
+                <div class="grid-item grid-item-2">2</div>
+                <div class="grid-item grid-item-3">3</div>
+                <div class="grid-item grid-item-4">4</div>
+                <div class="grid-item grid-item-5">5</div>
+                <div class="grid-item grid-item-6">6</div>
+                <div class="grid-item grid-item-7">7</div>
+                <div class="grid-item grid-item-8">8</div>
+                <div class="grid-item grid-item-9">9</div>
+                <div class="grid-item grid-item-10">10</div>
+                <div class="grid-item grid-item-11">11</div>
+                <div class="grid-item grid-item-12">12</div>
+                <div class="grid-item grid-item-13">13</div>
+                <div class="grid-item grid-item-14">14</div> -->
+                {% for i in cells %}
+
+                <div class="grid-item grid-item-{{i}}"><span class="grid-item-number">{{i}}</span>
+                    <div class="grid-item-arrow-up-flexbox"> 
+                        <button class="arrow-button arrow-button-up">
+                            <img class="arrow arrow-up" src="{% static 'main/arrow_up.png' %}">
+                        </button>
+                    </div>
+                    <div class="grid-item-arrow-left-right-flexbox">
+                        <button class="arrow-button arrow-button-left">
+                            <img class="arrow arrow-left" src="{% static 'main/arrow_left.png' %}">
+                        </button>
+                        <button class="arrow-button arrow-button-right">
+                            <img class="arrow arrow-right" src="{% static 'main/arrow_right.png' %}">
+                        </button>
+                    </div>
+                    <div class="grid-item-arrow-down-flexbox">
+                        <button class="arrow-button arrow-button-down">
+                            <img class="arrow arrow-down" src="{% static 'main/arrow_down.png' %}"> 
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+        <div class="builder-option">
+
+        </div>
+    </div>
+
+    <div class="test">
+        <div class="test2"></div><div class="test3"></div>
+    </div>
+    
+
+    
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/index.css' %}">
+    <script src="{% static 'main/index.js' %}"></script>
+
+</body>
+</html>

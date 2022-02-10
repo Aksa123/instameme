@@ -1,0 +1,110 @@
+{% load static %}
+<div class="content-item" id="content-{{item.id}}">
+    {% if item.trigger == True %}
+    <input type="hidden" class="trigger" name="trigger" value="{{ item.trigger }}">
+    {% endif %}
+    <div class="content-item-info">
+        <div class="content-item-info-item">
+            <button class="content-item-info-item-button">
+                <img src="{{ item.avatar }}" alt="info image" class="content-item-info-item-img">
+            </button>
+        </div>
+        <div class="content-item-info-item info-name">
+            <p class="content-item-info-item-name"><a href="{% url 'instagif:user_detail' item.uploader.id %}">{{ item.username }}</a></p>
+        </div>
+        <div class="content-item-info-item info-etc">
+            <button class="content-item-info-item-button">
+                <img src="{% static 'instagif/dots.png' %}" alt="etc dots image" class="content-item-info-item-img">
+            </button>
+        </div>
+    </div>
+    <div class="content-item-title">
+        <a class="content-item-title-link" href="{% url 'instagif:detail' item.id %}" >{{ item.title }}</a>
+    </div>
+    <div class="content-item-gif">
+        <img src="{{ item.src }}" alt="image alt" class="content-item-gif-img">
+        <!-- <video class="content-item-gif-img" autoplay muted loop>
+            <source src="{{ item.gif_url_small }}" type="video/mp4">
+            <source src="{{ item.gif_url }}" type="video/gif">
+            Your browser does not support the video tag.
+        </video>  -->
+    </div>
+    <div class="content-item-action">
+        <input class="image-id" value="{{ item.id }}" type="hidden">
+
+        <div class="content-item-action-item">
+            {% if user %}
+            <button class="content-item-action-item-button like-button">
+            {% else %}
+            <button class="content-item-action-item-button like-button button-disabled" disabled>
+            {% endif %}
+                {% if item.liked_by_user%}
+                <img src="{% static 'instagif/liked.png' %}" alt="like image" class="content-item-action-item-img">
+                {% else %}
+                <img src="{% static 'instagif/unliked.png' %}" alt="unlike image" class="content-item-action-item-img">
+                {% endif %}
+            </button>
+        </div>
+        <div class="content-item-action-item">
+            {% if user %}
+            <button class="content-item-action-item-button comment-button">
+            {% else %}
+            <button class="content-item-action-item-button comment-button button-disabled" disabled>
+            {% endif %}
+                <img src="{% static 'instagif/comment.png' %}" alt="comment image" class="content-item-action-item-img">
+            </button>
+        </div>
+        <div class="content-item-action-item">
+            {% if user %}
+            <button class="content-item-action-item-button share-button">
+            {% else %}
+            <button class="content-item-action-item-button share-button button-disabled" disabled>
+            {% endif %}
+                <img src="{% static 'instagif/share.png' %}" alt="share image" class="content-item-action-item-img">
+            </button>
+        </div>
+        <div class="content-item-action-item content-item-action-item-save">
+            {% if user %}
+            <button class="content-item-action-item-button save-button">
+            {% else %}
+            <button class="content-item-action-item-button save-button button-disabled" disabled>
+            {% endif %}
+                {% if item.saved_by_user %}
+                <img src="{% static 'instagif/saved.png' %}" alt="save image" class="content-item-action-item-img">
+                {% else %}
+                <img src="{% static 'instagif/unsaved.png' %}" alt="save image" class="content-item-action-item-img">
+                {% endif %}
+            </button>
+        </div>
+    </div>
+    <div class="content-item-comment">
+        {% if item.like_count > 0 %}
+        <div id="like-count-{{ item.id }}" class="content-item-comment-likes-number">Liked by {{ item.like_count }} people</div>
+        {% else %}
+        <div id="like-count-{{ item.id }}" class="content-item-comment-likes-number">No likes yet</div>
+        {% endif %}
+        <p id="description">
+            {{ item.description_short }}{% if item.description_show_more %}<span class="description-more"><i>...more</i></span><span class="description-long display-none">{{ item.description_long }} <span class="description-less"><i>...less</i></span></span>{% endif %}
+        </p>
+        <div id="tags-container">
+            {% for tag in item.tags %}
+            <a href="{% url 'instagif:search_tag' tag.name %}" ><span class="tag-span">#{{ tag.name }}</span></a>
+            {% endfor %}
+        </div>
+
+        
+
+<!-- 
+        {% for comment in item.mini_comments %}
+        <div class="content-item-comment-mini-comment"><p><span class="comment-name">{{ comment.username }} </span> {{ comment.content }}</p></div>
+        {% endfor %}
+
+        {% if item.comment_count > 0 %}
+        <div class="content-item-comment-show">View all {{ item.mini_comments_count }} comments</div>
+        {% else %}
+        <div class="content-item-comment-show">No comments yet</div>
+        {% endif %} -->
+    </div>
+    <div class="content-item-date">{{ item.date }}</div>
+
+</div>

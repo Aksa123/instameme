@@ -1,0 +1,171 @@
+{% extends "instagif/base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div id="detail-content">
+    {% csrf_token %}
+    <input id="image-id" value="{{ image.id }}" type="hidden">
+
+    <div class="content-item">
+        <div class="content-item-info">
+            <div class="content-item-info-item">
+                <button class="content-item-info-item-button">
+                    <img src="{{ uploader.avatar }}" alt="info image" class="content-item-info-item-img">
+                </button>
+            </div>
+            <div id="info-name" class="content-item-info-item">
+                <p class="content-item-info-item-name"><a href="{% url 'instagif:user_detail' uploader.id %}">{{ uploader.username }}</a></p>
+            </div>
+            <div id="info-etc" class="content-item-info-item">
+                <button class="content-item-info-item-button">
+                    <img src="{% static 'instagif/dots.png' %}" alt="etc dots image" class="content-item-info-item-img">
+                </button>
+            </div>
+        </div>
+        <div class="content-item-title">
+            {{ image.title }}
+        </div>
+        
+        <div class="content-item-gif-comment-container">
+            <div class="content-item-gif">
+                <img class="content-item-gif-img" src="{{ image.image.url }}" alt="image">
+                <!-- <video class="content-item-gif-img" autoplay muted loop>
+                    <source src="{{ item.gif_url }}" type="video/mp4">
+                    <source src="{{ item.gif_url }}" type="video/gif">
+                    Your browser does not support the video tag.
+                </video>  -->
+            </div>
+
+            <div class="content-item-action-comment-container">
+                <div id="content-item-action-likes-number">
+                    <div class="content-item-action">
+                        <div class="content-item-action-item">
+                            <button id="like-button" class="content-item-action-item-button">
+                                {% if liked_image %}
+                                <img src="{% static 'instagif/liked.png' %}" alt="like image" class="content-item-action-item-img">
+                                {% else %}
+                                <img src="{% static 'instagif/unliked.png' %}" alt="like image" class="content-item-action-item-img">
+                                {% endif %}
+                            </button>
+                        </div>
+                        <div class="content-item-action-item">
+                            <button id="share-button" class="content-item-action-item-button">
+                                <img src="{% static 'instagif/share.png' %}" alt="share image" class="content-item-action-item-img">
+                            </button>
+                        </div>
+                        <div id="action-save" class="content-item-action-item">
+                            <button id="save-button" class="content-item-action-item-button">
+                                {% if saved_image %}
+                                <img src="{% static 'instagif/saved.png' %}" alt="save image" class="content-item-action-item-img">
+                                {% else %}
+                                <img src="{% static 'instagif/unsaved.png' %}" alt="save image" class="content-item-action-item-img">
+                                {% endif %}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-item-likes-number-date-container">
+                        {% if like_count > 0 %}
+                        <div id="like-count-{{ image.id }}" class="content-item-comment-likes-number">Liked by {{ like_count }} people</div>
+                        {% else %}
+                        <div id="like-count-{{ image.id }}" class="content-item-comment-likes-number">No likes yet</div>
+                        {% endif %}
+                        <!-- <div class="content-item-date">{{ image.date_created }}</div> -->
+                    </div>
+                </div>
+                <div id="description-comment-container">
+                    <div id="description-container">
+                        <p>{{image.description}}</p>
+                        <br>
+                        <div id="tags-container">
+                            {% for tag in tags %}
+                            <a href="{% url 'instagif:search_tag' tag.tag.name %}" ><span class="tag-span">#{{ tag.tag.name }}</span></a>
+                            {% endfor %}
+                        </div>
+                        <div class="content-item-date">{{ image.date_created }}</div>
+                    </div>
+
+                    <div class="content-item-comment">
+                        {% if comment_count > 0 %}
+                        <div id="comments-number">{{ comment_count }} COMMENTS</div>
+                        {% else %}
+                        <div id="comments-number">NO COMMENTS YET</div>
+                        {% endif %}
+                        <div id="content-item-comment-item-container">
+                        {% for comment in comments %}
+                            <div id="comment-item-{{ comment.id }}" class="content-item-comment-item">
+                                <div class="content-item-comment-item-user-avatar">
+                                    <img class="content-item-comment-item-img" src="{{ comment.avatar }}" alt="user avatar img">
+                                </div>
+                                <div class="content-item-comment-item-content">
+                                    <div class="content-item-comment-item-username-date-container">
+                                        <div class="content-item-comment-item-username">{{ comment.name }}</div>
+                                        <div class="content-item-comment-item-date">{{ comment.date }}</div>
+                                    </div>
+                                    <div class="content-item-comment-item-text">{{ comment.content }}</div>
+                                </div>
+                            </div>
+                        
+                        {% endfor %}
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+                <div id="comment-form-container" class="position-fixed">
+                    {% if user %}
+                    <form id="comment-form" action="#" method="post">
+            
+                        <div id="form-input-flex">
+                            <div id="comment-input-container">
+                                <textarea name="comment-input" id="comment-input"  placeholder="Add a comment..."></textarea>
+                            </div>
+                            <button id="submit-button" type="submit">Post</button>
+                        </div>
+                    </form>
+                    {% else %}
+            
+                    <div id="please-log-in">
+                        <p><a id="please-log-in-link" href="{% url 'instagif:login' %}">Log in</a> to leave a comment</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div id="comment-form-container" class="position-fixed">
+            {% if person %}
+            <form id="comment-form" action="#" method="post">
+    
+                <div id="form-input-flex">
+                    <textarea name="comment-input" id="comment-input"  placeholder="Add a comment..."></textarea>
+    
+                    <button id="submit-button" type="submit">Post</button>
+                </div>
+            </form>
+            {% else %}
+    
+            <div id="please-log-in">
+                <p><a id="please-log-in-link" href="{% url 'instagif:login' %}">Log in</a> to leave a comment</p>
+            </div>
+            {% endif %}
+        </div> -->
+        
+
+    </div>
+    
+
+
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/detail.css' %}">
+<script src="{% static 'instagif/detail.js' %}"></script>
+{% endblock%}

@@ -1,0 +1,44 @@
+{% extends "instagif/admin.html" %}
+
+{% block content %}
+{% load static %}
+<form action="{% url 'instagif:admin_user_create'%}" method="POST" id="create-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-container">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="input" placeholder="Username..." required>
+    </div>
+
+    <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="input" placeholder="Email..." required>
+    </div>
+    <div id="avatar-preview-container" >
+        <img id="avatar-preview" src="{{ user.avatar }}" alt="avatar preview" >
+    </div>
+    <div class="input-container">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar" id="avatar"  accept="image/*" required>
+    </div>
+
+    <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="input" placeholder="Password..." required>
+    </div>
+    <div class="input-container">
+        <label for="password-confirm">Confirm Password</label>
+        <input type="password" name="password-confirm" id="password-confirm" class="input" placeholder="Confirm password..." required>
+    </div>
+
+    <div id="submit-container" class="input-container">
+        <button id="submit" type="submit">Create</button>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/admin_user_edit.css' %}">
+<script src="{% static 'instagif/admin_user_create.js' %}"></script>
+{% endblock %}

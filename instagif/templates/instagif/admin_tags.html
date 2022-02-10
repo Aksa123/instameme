@@ -1,0 +1,38 @@
+{% extends "instagif/admin.html" %}
+
+
+
+{% block content %}
+{% csrf_token %}
+
+<div id="add-container">
+    <a id="add-link" class="btn btn-success" href="{% url 'instagif:admin_tag_create' %}">Add Tag</a>
+</div>
+
+
+<table id="main-table" class="table">
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for item in items %}
+        <tr id="row-{{ item.id }}">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>
+                <a href="{% url 'instagif:admin_tag_edit' item.id %}" type="button" class="btn btn-primary">Edit</a>
+                <button id="tag-{{ item.id }}" type="button" class="delete-button btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

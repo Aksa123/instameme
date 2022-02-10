@@ -1,0 +1,56 @@
+{% extends 'instagif/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<input type="hidden" name="user-id" id="user-id" value="{{ user.id }}">
+{% csrf_token %}
+
+<div id="user-top-container">
+    <div id="user-detail-container">
+        <img src="{{ user.person.avatar.url }}" alt="" id="user-detail-avatar">
+        <div id="user-detail-followers-container">
+            <div class="user-detail-followers-item">
+                <div class="user-detail-followers-item-number">{{ posts_count }}</div>
+                <div class="user-detail-followers-item-text">Posts</div>
+            </div>
+            <div class="user-detail-followers-item">
+                <div class="user-detail-followers-item-number">{{ followers_count }}</div>
+                <div class="user-detail-followers-item-text">Followers</div>
+            </div>
+            <div class="user-detail-followers-item">
+                <div class="user-detail-followers-item-number">{{ following_count }}</div>
+                <div class="user-detail-followers-item-text">Following</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="user-info-container">
+        <div id="user-info-username">{{ user.person.name }}</div>
+        <div id="user-info-description">Description</div>
+        {% if request.user.is_authenticated and user.id != request.user.id %}
+            {% if is_following == True %}
+            <button id="follow-button" class="unfollow-background">Following</button>
+            {% else %}
+            <button id="follow-button" class="follow-background">Follow</button>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<div id="images-container">
+    
+    {% for image in images %}
+        {% include "instagif/user_detail_component.html" %}
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/user_detail.css' %}">
+<script src="{% static 'instagif/user_detail.js' %}"></script>
+{% endblock %}

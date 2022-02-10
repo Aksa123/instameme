@@ -1,0 +1,101 @@
+{% load static %}
+    <!-- <input id="person-id" value="{{ person.id }}" type="hidden"> -->
+
+    {% for item in items %}
+    <div class="index--content-item" id="index--content-{{ item.giphy_id }}">
+        <div class="index--content-item-info">
+            <div class="index--content-item-info-item">
+                <button class="index--content-item-info-item-button">
+                    <img src="{{ item.avatar }}" alt="info image" class="index--content-item-info-item-img">
+                </button>
+            </div>
+            <div class="index--content-item-info-item index--info-name">
+                <p class="index--content-item-info-item-name">{{ item.username }}</p>
+            </div>
+            <div class="index--content-item-info-item index--info-etc">
+                <button class="index--content-item-info-item-button">
+                    <img src="{% static 'instagif/dots.png' %}" alt="etc dots image" class="index--content-item-info-item-img">
+                </button>
+            </div>
+        </div>
+        <div class="index--content-item-title">
+            <a class="index--content-item-title-link" href="{% url 'instagif:detail' item.giphy_id %}" >{{ item.title }}</a>
+        </div>
+        <div class="index--content-item-gif">
+            <video class="index--content-item-gif-img" autoplay muted loop>
+                <source src="{{ item.gif_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+        </div>
+        <div class="index--content-item-action">
+            <!-- <input class="giphy-id" value="{{ item.giphy_id }}" type="hidden"> -->
+
+            <div class="index--content-item-action-item">
+                {% if person %}
+                <button id="index--like-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--like-button">
+                {% else %}
+                <button id="index--like-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--like-button button-disabled" disabled>
+                {% endif %}
+                    {% if item.giphy_id in liked_gifs %}
+                    <img src="{% static 'instagif/liked.png' %}" alt="like image" class="index--content-item-action-item-img">
+                    {% else %}
+                    <img src="{% static 'instagif/unliked.png' %}" alt="unlike image" class="index--content-item-action-item-img">
+                    {% endif %}
+                </button>
+            </div>
+            <div class="index--content-item-action-item">
+                {% if person %}
+                <button id="index--comment-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--comment-button">
+                {% else %}
+                <button id="index--comment-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--comment-button button-disabled" disabled>
+                {% endif %}
+                    <img src="{% static 'instagif/comment.png' %}" alt="comment image" class="index--content-item-action-item-img">
+                </button>
+            </div>
+            <div class="index--content-item-action-item">
+                {% if person %}
+                <button id="index--share-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--share-button">
+                {% else %}
+                <button id="index--share-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--share-button button-disabled" disabled>
+                {% endif %}
+                    <img src="{% static 'instagif/share.png' %}" alt="share image" class="index--content-item-action-item-img">
+                </button>
+            </div>
+            <div class="index--content-item-action-item index--content-item-action-item-save">
+                {% if person %}
+                <button id="index--save-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--save-button">
+                {% else %}
+                <button id="index--save-button-{{ item.giphy_id }}" class="index--content-item-action-item-button index--save-button button-disabled" disabled>
+                {% endif %}
+                    {% if item.giphy_id in saved_gifs %}
+                    <img src="{% static 'instagif/saved.png' %}" alt="save image" class="index--content-item-action-item-img">
+                    {% else %}
+                    <img src="{% static 'instagif/unsaved.png' %}" alt="save image" class="index--content-item-action-item-img">
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+        <div class="index--content-item-comment">
+            {% if item.like_count > 0 %}
+            <div id="index--like-count-{{ item.giphy_id }}" class="index--content-item-comment-likes-number">Liked by {{ item.like_count }} people</div>
+            {% else %}
+            <div id="index--like-count-{{ item.giphy_id }}" class="index--content-item-comment-likes-number">No likes yet</div>
+            {% endif %}
+
+            {% for comment in item.comments %}
+            <div class="index--content-item-comment-mini-comment"><p><span class="index--comment-name">{{ comment.name }} </span> {{ comment.content }}</p></div>
+            {% endfor %}
+
+            {% if item.comment_count > 0 %}
+            <div class="index--content-item-comment-show">View all {{ item.comment_count }} comments</div>
+            {% else %}
+            <div class="index--content-item-comment-show">No comments yet</div>
+            {% endif %}
+        </div>
+        <div class="index--content-item-date">{{ item.date }}</div>
+
+    </div>
+
+    {% endfor %}
+
+    

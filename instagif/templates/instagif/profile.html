@@ -1,0 +1,78 @@
+{% extends "instagif/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div id="option-bar-container">
+    <div id="option-bar-flex">
+        <div class="option-bar-item">
+            <button class="option-bar-item-button" id="edit-profile-button">Edit Profile</button>
+        </div>
+        <div class="option-bar-item">
+            <button class="option-bar-item-button" id="saved-images-button">Saved Gifs</button>
+        </div>
+        <div id="selection-line" class="selection-line-left0"></div>
+    </div>
+</div>
+
+
+<div id="profile-saved-images-container" >
+
+    <div id="profile-content" class="display-inline-block left-0 visible">
+        <form action="{% url 'instagif:edit_profile' %}" id="profile-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="avatar-input">Avatar</label>
+            <div id="image-input-container">
+                <img src="{{ user.avatar }}" alt="avatar image" id="avatar-placeholder">
+                <input type="file" id="avatar-input" name="avatar-input" accept="image/*">
+            </div>
+            <label for="name-input">Username</label><input type="text" class="input-item" name="name-input" id="name-input" value="{{ user.username }}" required>
+            <label for="email-input">Email</label><input type="text" class="input-item" id="email-input" name="email-input" value="{{ user.email }}" required>
+
+            <label for="change-password-checkbox">Change password?</label><input type="checkbox" class="input-item" id="change-password-checkbox" name="change-password-checkbox">
+            <div id="password-input-container" class="display-none">
+                <label for="old-password-input">Old Password</label><input type="password" class="input-item" id="old-password-input" name="old-password-input">
+                <label for="new-password-input">New Password</label><input type="password" class="input-item" id="new-password-input" name="new-password-input">
+                <label for="confirm-new-password-input">Confirm New Password</label><input type="password" class="input-item" id="confirm-new-password-input" name="confirm-new-password-input">
+            </div>
+            <button type="submit" id="submit-button" >Update</button>
+        </form>
+    </div>
+
+
+
+
+    <div id="saved-images-content" class="display-none left-100">
+        <div id="saved-images-text">
+            {% if save_count > 0 %}
+            <p>Here's the list of your saved images</p>
+            {% else %}
+            <p>You have no saved images :(</p>
+            {% endif %}
+        </div>
+        <div id="saved-images-container">
+            <div id="saved-images-grid">
+                <!-- loop items -->
+                {% for item in saved_items_list %}
+                <div class="saved-images-item" id="saved-images-item-{{ item.id }}">
+                    <a class="saved-images-item-link" href="{% url 'instagif:detail' item.id %}" >
+                        <img class="saved-images-item-img" src="{{ item.url }}">
+                    </a>
+                </div>
+                {% endfor %}
+                <!-- end loop -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/profile.css' %}">
+<link rel="stylesheet" href="{% static 'instagif/saved_images.css' %}">
+<script src="{% static 'instagif/profile.js' %}"></script>
+{% endblock %}

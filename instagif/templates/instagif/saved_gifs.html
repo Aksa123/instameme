@@ -1,0 +1,44 @@
+{% extends "instagif/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div id="mini-profile-container">
+    <img src="{{ person.avatar.url }}" alt="" id="mini-profile-img">
+    <div id="mini-profile-data-container">
+        <p id="mini-profile-data-username">{{ person.name }}</p>
+        <button id="mini-profile-data-edit-button">Edit Profile</button>
+    </div>
+</div>
+
+<div id="saved-gifs-text">
+    <p>Here's the list of your saved gifs</p>
+</div>
+
+<div id="saved-gifs-container">
+    <div id="saved-gifs-grid">
+
+        <!-- loop items -->
+        {% for item in saved_giphy_data %}
+        <div class="saved-gifs-item" id="saved-gifs-item-{{ item.giphy_id }}">
+            <a class="saved-gifs-item-link" href="{% url 'instagif:detail' item.giphy_id %}" >
+                <video class="saved-gifs-item-img" autoplay muted loop>
+                    <source src="{{ item.gif_url_small }}" type="video/mp4">
+                    <source src="{{ item.gif_url_normal }}" type="video/gif">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        {% endfor %}
+        <!-- end loop -->
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'instagif/saved_gifs.css' %}">
+{% endblock %}

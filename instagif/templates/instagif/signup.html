@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    {% load static %}
+    <div id="super-container">
+        <div id="login-box">
+            <div id="logo-container"><a id="index-link" href="{% url 'instagif:index' %}">Instagif</a></div>
+
+            <div id="form-container">
+                <form id="signup-form" method="post" enctype="multipart/form-data" required>
+                    <div class="form-input-container">
+                        <input id="form-email" class="form-input" type="email" name="email">
+                        <span id="email-placeholder" class="input-placeholder input-placeholder-big">Email</span>
+                    </div>
+                    <div class="form-input-container">
+                        <input id="form-avatar" class="form-input" type="file" accept="image/*" name="avatar" required>
+                        <span id="avatar-placeholder" class="input-placeholder input-placeholder-small">Avatar</span>
+                    </div>
+                    <div id="loaded-avatar-name-container">
+                        <img src="{% static 'instagif/save.png' %}" alt="loaded avatar" id="loaded-avatar">
+                        <div id="form-input-container-name" class="form-input-container">
+                            <input id="form-name" class="form-input" type="text" name="name" required>
+                            <span id="name-placeholder" class="input-placeholder input-placeholder-big">Username</span>
+                        </div>
+                    </div>
+                    <div id="form-input-container-password" class="form-input-container">
+                        <input id="form-password" class="form-input" type="password" name="password" required>
+                        <span id="password-placeholder" class="input-placeholder input-placeholder-big">Password</span>
+                    </div>
+                    <div id="form-input-container-confirm-password" class="form-input-container">
+                        <input id="form-confirm-password" class="form-input" type="password" name="password" required>
+                        <span id="confirm-password-placeholder" class="input-placeholder input-placeholder-big">Confirm password</span>
+                    </div>
+                    <p id="password-dont-match">Passwords don't match</p>
+                    {% csrf_token %}
+                    <button id="form-submit" type="submit">Sign up</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="signup-link-container">
+            <p id="signup-link-text">Already have an account? <a class="signup-link" href="{% url 'instagif:login' %}">Log in</a></p>
+        </div>
+    </div>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'instagif/signup.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <script src="{% static 'instagif/signup.js' %}"></script>
+
+
+
+</body>
+</html>
