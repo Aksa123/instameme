@@ -18,6 +18,7 @@ like_button.addEventListener("click", function(){
     let like_count = document.querySelector("#like-count-" + image_id)
     let form_data = new FormData()
     form_data.append("image_id", image_id)
+    console.log(image_id)
 
     fetch(url, {
         method: "POST",
@@ -170,4 +171,4 @@ comment_form.addEventListener("submit", function(e){
 
 })
 
-console.log(getComputedStyle(document.body).height)
+console.log("jakdjkasjdksajdl")
