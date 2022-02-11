@@ -53,7 +53,7 @@ a:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 20px;
     background-color: rgba(255, 255, 255, 0.3);
