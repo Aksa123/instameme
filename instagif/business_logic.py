@@ -1,6 +1,7 @@
 import requests
 import xmltodict, json
 from pprint import pprint, pformat
+from django.http.response import HttpResponseServerError, JsonResponse
 from .models import Person
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, update_session_auth_hash, login, logout
@@ -58,3 +59,20 @@ def get_user(request, id=None):
             user = None
 
     return user
+
+
+def is_admin(request):
+    if request.user.is_authenticated:
+        person = Person.objects.get(user=request.user)
+        if person.is_admin == False:
+            return JsonResponse({
+                "status": "ERROR",
+                "message": "You are not authorized to access this page!"
+            })
+        else:
+            pass
+    else:
+        return JsonResponse({
+            "status": "ERROR",
+            "message": "You are not authorized to access this page!"
+        })

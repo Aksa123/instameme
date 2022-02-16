@@ -30,14 +30,10 @@
         <div class="content-item-gif-comment-container">
             <div class="content-item-gif">
                 <img class="content-item-gif-img" src="{{ image.image.url }}" alt="image">
-                <!-- <video class="content-item-gif-img" autoplay muted loop>
-                    <source src="{{ item.gif_url }}" type="video/mp4">
-                    <source src="{{ item.gif_url }}" type="video/gif">
-                    Your browser does not support the video tag.
-                </video>  -->
             </div>
 
             <div class="content-item-action-comment-container">
+                <!-- mobile version -->
                 <div id="content-item-action-likes-number">
                     <div class="content-item-action">
                         <div class="content-item-action-item">
@@ -112,7 +108,6 @@
                         
                     </div>
                 </div>
-
                 <div id="comment-form-container" class="position-fixed">
                     {% if user %}
                     <form id="comment-form" action="#" method="post">
@@ -131,6 +126,9 @@
                     </div>
                     {% endif %}
                 </div>
+                <!-- mobile version end -->
+                
+                
             </div>
         </div>
 

@@ -1,5 +1,5 @@
 import re
-from django.http.response import HttpResponseServerError, JsonResponse
+from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.http import request, HttpResponse
 from django.template.loader import render_to_string
@@ -8,6 +8,7 @@ from django.template.engine import Engine
 from django.urls import reverse
 from pprint import pprint, pformat
 from .business_logic import str_to_bool, get_mini_comments_from_querysets, get_user
+from .decorators import is_admin
 from django.contrib.auth.models import User
 from django.db.models import Count
 from django.db import connection
@@ -20,10 +21,11 @@ import base64
 
 
 # Create your views here.
-
+@is_admin
 def admin_home(request):
     return redirect("instagif:admin", menu="users")
 
+@is_admin
 def admin(request, menu):
     limit = 10
     page = request.GET.get("page", 1)
@@ -50,6 +52,7 @@ def admin(request, menu):
 
     return render(request, ("instagif/" + template), context={"items": items, "menu": menu})
 
+@is_admin
 def admin_user_edit(request, id):
     if request.method == "GET":
         user = get_user(request, id=id)
@@ -94,6 +97,7 @@ def admin_user_edit(request, id):
     else:
         return HttpResponse("ERROR: Forbidden method.")
 
+@is_admin
 def admin_user_create(request):
     if request.method == "GET":
         return render(request, "instagif/admin_user_create.html")
@@ -121,6 +125,7 @@ def admin_user_create(request):
     else:
         return HttpResponse("ERROR: Forbidden method.")
 
+@is_admin
 def admin_user_delete(request, id):
     if request.method == "DELETE":
         current_user_id = request.user.id
@@ -142,6 +147,7 @@ def admin_user_delete(request, id):
     else:
         return HttpResponse("ERROR: Forbidden method.")
 
+@is_admin
 def admin_tag_edit(request, id):
     if request.method == "GET":
         tag = Tag.objects.get(id=id)
@@ -161,6 +167,7 @@ def admin_tag_edit(request, id):
             "message": "Tag has been updated successfully."
         })
 
+@is_admin
 def admin_tag_create(request):
     if request.method == "GET":
         return render(request, "instagif/admin_tag_create.html")
@@ -173,6 +180,7 @@ def admin_tag_create(request):
             "message": "Tag has been created successfully."
         })
 
+@is_admin
 def admin_tag_delete(request, id):
     if request.method == "DELETE":
         tag = Tag.objects.get(id=id)
@@ -185,6 +193,7 @@ def admin_tag_delete(request, id):
     else:
         return HttpResponse("ERROR: Forbidden method.")
 
+@is_admin
 def admin_image_create(request):
     if request.method == "GET":
         tags = Tag.objects.all()
@@ -218,6 +227,7 @@ def admin_image_create(request):
             "message": "Forbidden method."
         })
 
+@is_admin
 def admin_image_edit(request, id):
     if request.method == "GET":
         image_obj = Image.objects.get(id=id)
@@ -278,6 +288,7 @@ def admin_image_edit(request, id):
             "message": "Forbidden method."
         }) 
 
+@is_admin
 def admin_image_delete(request, id):
     if request.method == "DELETE":
         image = Image.objects.get(id=id)
@@ -550,8 +561,6 @@ def reel_all(request):
             image_string = render_to_string("instagif/reel_component.html", context={"image": image})
             images_list.append(image_string)
 
-        pprint(images_list[0], indent=4)
-
         return JsonResponse({
             "images_list": images_list
         })
@@ -770,9 +779,6 @@ def api_follow(request, following_id):
         user = request.user
         following_obj = Following.objects.filter(user=user, following_id=following_id)
         is_already_following = following_obj.exists()
-        print(is_already_following)
-        print(following_id)
-        pprint(following_obj, indent=4)
 
         if is_already_following:
             following_obj.delete()
@@ -814,8 +820,6 @@ def api_edit_profile(request):
         if "input_avatar" in request.FILES:
             person.avatar = request.FILES["input_avatar"]
         person.save()
-
-        pprint(request.POST, indent=4)
 
         # check if change-password-checkbox is selected or not
         if password_checkbox:

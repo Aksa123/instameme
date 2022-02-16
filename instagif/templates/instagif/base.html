@@ -71,9 +71,9 @@
                                 <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
                                 <p class="account-dropdown-item-text">Profile</p>
                             </a>
-                            <a href="{% url 'instagif:profile' %}#saved-gifs-content" class="account-dropdown-item-link">
+                            <a href="{% url 'instagif:profile' %}#saved-images-content" class="account-dropdown-item-link">
                                 <img src="{% static 'instagif/unsaved.png' %}" alt="" class="account-dropdown-item-img">
-                                <p class="account-dropdown-item-text">Saved Gifs</p>
+                                <p class="account-dropdown-item-text">Saved Images</p>
                             </a>
                             <hr class="account-dropdown-line">
                             <form id="logout-form" action="{% url 'instagif:logout' %}" method="POST">

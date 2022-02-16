@@ -13,6 +13,7 @@ class Person(models.Model):
     email = models.EmailField()
     name = models.CharField(max_length=100, null=True)
     avatar = models.ImageField(upload_to=MEDIA_FOLDER_AVATAR)
+    is_admin = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 

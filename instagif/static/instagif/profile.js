@@ -1,4 +1,6 @@
 let profile_saved_images_container = document.querySelector("#profile-saved-images-container")
+const base_content_container = document.querySelector("#base-content-container")
+const profile_saved_extra_container = document.querySelector("#profile-saved-extra-container")
 let edit_profile_button = document.querySelector("#edit-profile-button")
 let saved_images_button = document.querySelector("#saved-images-button")
 let selection_line = document.querySelector("#selection-line")
@@ -29,12 +31,8 @@ function slideToSavedGifs(){
     selected_menu = "saved-images"
     selection_line.classList.replace("selection-line-left0", "selection-line-left50")
 
-    saved_images_content.classList.replace("display-none", "display-inline-block")
-    saved_images_content.style.bottom = getComputedStyle(profile_form).height
-    setTimeout(() => {
-        saved_images_content.classList.replace("left-100", "left-0")
-        profile_content.classList.replace("left-0", "left-min100")
-    }, 50)
+    profile_saved_images_container.classList.replace("left-0", "left-min100")
+    profile_saved_extra_container.classList.replace("overflow-y-hidden", "overflow-y-scroll")
 }
 
 function slideToProfile(){
@@ -43,9 +41,8 @@ function slideToProfile(){
     selected_menu = "edit-profile"
     selection_line.classList.replace("selection-line-left50", "selection-line-left0")
 
-    profile_content.classList.replace("hidden", "visible")
-    profile_content.classList.replace("left-min100", "left-0")
-    saved_images_content.classList.replace("left-0", "left-100")
+    profile_saved_images_container.classList.replace("left-min100", "left-0")
+    profile_saved_extra_container.classList.replace("overflow-y-scroll", "overflow-y-hidden")
 }
 
 
@@ -64,28 +61,7 @@ function startProfilePage(){
         console.log(getComputedStyle(profile_form).height)
     
         changePasswordContainerDisplay()
-    })
-    
-    
-    
-    for (let i=0; i<menu_contents.length; i++){
-        let menu_content = menu_contents[i]
-        console.log(menu_content)
-        menu_content.addEventListener("transitionend", () => {
-            if (selected_menu === "saved-images"){
-                console.log("saved")
-                profile_content.classList.replace("visible", "hidden")
-            }
-            else if (selected_menu === "edit-profile"){
-                console.log("edit")
-                saved_images_content.classList.replace("display-inline-block", "display-none")
-            }
-            
-        })
-    }
-
-
-    
+    })    
 }
 
 

@@ -78,12 +78,18 @@
     visibility: visible;
 }
 
+#profile-saved-extra-container{
+    height: 100%;
+    padding-top: 30px;
+}
+
 #profile-saved-images-container{
-    width: 100%;
-    max-width: 100%;
+    width: 200%;
+    /* max-width: 100%; */
     position: relative;
     overflow-x: hidden;
     transition-duration: 1000ms;
+    display: flex;
 }
 
 .bottom-550{
@@ -94,8 +100,17 @@
     bottom: 0;
 }
 
+.overflow-y-hidden{
+    overflow-y: hidden;
+}
+
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
 #saved-images-content{
-    width: 100%;
+    width: 50%;
+    padding-top: 50px;
     position: relative;
     box-sizing: border-box;
     transition-duration: 1000ms;
@@ -103,8 +118,8 @@
 }
 
 #profile-content{
-    width: 100%;
-    padding-top: 60px;
+    width: 50%;
+    padding-top: 30px;
     position: relative;
     box-sizing: border-box;
     transition-duration: 1000ms;
@@ -113,7 +128,7 @@
 
 #profile-form{
     width: 400px;
-    height: 100%;
+    /* height: 100%; */
     margin-left: auto;
     margin-right: auto;
 }
@@ -124,18 +139,15 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #avatar-placeholder{
     width: 60px;
     height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-#avatar-placeholder{
     margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 #avatar-input{
@@ -151,7 +163,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: 1px solid cornflowerblue;
     box-sizing: border-box;
     border-radius: 8px;
@@ -164,8 +176,8 @@
 
 #submit-button{
     width: 100px;
-    height: 50px;
-    margin-top: 50px;
+    height: 35px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     display: block;

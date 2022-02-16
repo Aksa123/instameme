@@ -10,6 +10,12 @@
     /* font-family: 'Montserrat', sans-serif; */
     font-weight: 300;
     box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 html{
