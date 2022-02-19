@@ -93,7 +93,7 @@ DATABASES = {
     # },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'twibon',
+        'NAME': 'instameme',
         'USER': 'aksa123',
         'PASSWORD': 'Aksa359!',
         'HOST': 'localhost',
@@ -140,7 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "/var/www/instameme/collect_static/"
+STATIC_ROOT = "/var/www/instameme/instameme/collect_static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

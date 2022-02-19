@@ -1,0 +1,146 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+:root{
+    --sidebar-top-height: 70px;
+    --menu-height: 60px;
+    --border-color: #DBDBDB;
+    --background-color: rgb(43, 55, 64);
+    --content-margin-top: 20px;
+}
+
+
+
+a:link {
+text-decoration: none;
+}
+
+a:visited {
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+a:active {
+text-decoration: none;
+} 
+
+#super-container{
+    /* max-width: 1200px; */
+    min-width: 800px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+#sidebar-top{
+    width: 100%;
+    height: var(--sidebar-top-height);
+    background-color: var(--background-color);
+}
+
+#sidebar-top-link{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar-top-button{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 28px;
+    color: white;
+    font-family: 'Lobster', cursive;
+    background-color: inherit;
+}
+
+.line-break{
+    margin: 0;
+    color: white;
+}
+
+#content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color); */
+}
+
+#sidebar{
+    width: 30%;
+    max-width: 300px;
+    min-height: calc(100% - var(--topbar-height));
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+.bi{
+    margin-right: 10px;
+}
+
+#menu-container{
+    height: calc(100% - var(--sidebar-top-height));
+    padding-top: 20px;
+}
+
+.menu{
+    width: 100%;
+    position: relative;
+    height: var(--menu-height);
+    background-color: inherit;
+}
+
+.menu-button{
+    width: 100%;
+    height: var(--menu-height);
+    text-align: left;
+    padding-left: 20px;
+    background-color: inherit;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menu-button:hover{
+    background-color: cornflowerblue;
+}
+
+#main{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: calc(var(--sidebar-top-height)) ;
+    min-height: calc(100% - var(--topbar-height));
+    background-color: #FBFBFB;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+#main-table{
+    width: 100%;
+}
+
+.btn{
+    margin-right: 10px;
+}
+
+#add-container{
+    margin-bottom: 20px;
+}
+
+.row-image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

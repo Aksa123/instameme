@@ -1,0 +1,90 @@
+:root{
+    --saved-gif-item-width: 0.7
+}
+
+
+#mini-profile-container{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#mini-profile-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#mini-profile-data-container{
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#mini-profile-data-username{
+    font-size: 20px;
+    font-weight: 300;
+    display: block;
+    height: 30px;
+}
+
+#mini-profile-data-edit-button{
+    width: 250px;
+    height: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px grey solid;
+    border-radius: 2vw;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+#saved-images-text{
+    height: 50px;
+    /* margin-top: 50px; */
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+#saved-images-container{
+    width: 100%;
+}
+
+#saved-images-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.saved-images-item{
+    aspect-ratio: 1 / 1;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.saved-images-item-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.saved-images-item-link{
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (min-width: 900px){
+    #saved-images-grid{
+        gap: 20px;
+    }
+}
