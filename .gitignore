@@ -1,4 +1,7 @@
+*.log
+*.pot
 *.pyc
+__pycache__/
 twibon/development_status.py
-*/__pycache__/*.pyc
-media/instagif/*/*.*
+media/
+collect_static/
