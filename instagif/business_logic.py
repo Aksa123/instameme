@@ -1,3 +1,4 @@
+from django.forms import ImageField
 import requests
 import xmltodict, json
 from pprint import pprint, pformat
@@ -76,3 +77,6 @@ def is_admin(request):
             "status": "ERROR",
             "message": "You are not authorized to access this page!"
         })
+
+
+

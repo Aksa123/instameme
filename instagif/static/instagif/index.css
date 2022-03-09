@@ -4,7 +4,6 @@
     max-width: 600px;
     height: 100%;
     /* min-height: calc(100vh - 60px); */
-    background-color: whitesmoke;
 }
 
 #base-content-container{
@@ -14,6 +13,8 @@
 #selection{
     max-width: 600px;
     position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
 }
 
 #selection-container-extra{
@@ -111,11 +112,12 @@
 }
 
 .content-item{
-    padding-top: 20px;
+    margin-top: 20px;
     padding-bottom: 15px;
     background-color: white;
-    /* border: 1px solid; */
+    border: 1px solid;
     border-color: var(--border-color);
+    border-radius: 3px;
 }
 
 .content-item-info{

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal - Index</title>
+
+    <!-- css -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'personal/index.css' %}">
+    
+
+</head>
+<body>
+    <div id="super-container">
+        <div id="topbar">
+            <div id="home" class="topbar-item">
+                <a class="topbar-item-link">Home</a>
+            </div>
+            <div id="projects" class="topbar-item">
+                <a id="projects-link" class="topbar-item-link">Knock-off projects</a>
+                
+                <div id="projects-dropdown" class="hide">
+                    <div class="project-item">
+                        <a class="project-item-link" >Instameme</a>
+                    </div>
+                    <div class="project-item">
+                        <a class="project-item-link">Instameme</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="topbar-item">
+                <a class="topbar-item-link">Contact</a>
+            </div>
+        </div>
+
+        <div id="main">
+            <div id="about-me" class="main-item">
+                <div class="title">About me</div>
+                <hr>
+                <div id="description-container">
+                    <img class="photo1" src="{% static 'personal/corridor.jpg' %}">
+                    <p id="description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quaerat aut amet totam ad atque aperiam illo. Voluptas voluptate ducimus, quam illo facilis officiis ea expedita amet inventore libero doloremque in veritatis accusamus ipsam placeat iusto pariatur consequatur modi quaerat dolorem explicabo temporibus corporis eos officia. Eligendi perferendis voluptas quibusdam?
+                    </p>
+                </div>
+            </div>
+            <div id="experiences"  class="main-item">
+                <div class="title">Experiences</div>
+                <hr>
+                <div class="experience-item">
+                    <!-- <img src="{% static 'personal/corridor.jpg' %}" alt="company logo" class="experience-item-img"> -->
+                    <div class="experience-item-data">
+                        <div class="experience-item-name">J Passport</div>
+                        <div class="experience-item-position">Database Engineer</div>
+                        <div class="experience-item-description">J Passport is a Singaporean loyalty platform that lets business clients reward their customers with coupons and points. My  </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script src="{% static 'personal/index.js' %}"></script>
+</body>
+</html>

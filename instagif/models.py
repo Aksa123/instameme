@@ -1,11 +1,32 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 import uuid
+from PIL import Image as PIL_Image
+from io import BytesIO
+from django.core.files import File
+import os
 
 
 MEDIA_FOLDER_AVATAR = "instagif/avatar/"
 MEDIA_FOLDER_IMAGE = "instagif/image/"
+
+def resize_image(image, size=(128, 128)):
+    pil_image = PIL_Image.open(image)
+    name, ext = os.path.splitext(image.path)
+    ext = ext[1:].upper()
+    if ext == "JPG":
+        ext = "JPEG"
+    pil_image = pil_image.convert("RGB")
+    # pil_image.thumbnail(size, PIL_Image.ANTIALIAS)
+    pil_io = BytesIO()
+    pil_image.save(pil_io, format='JPEG', quality=50)
+    pil_file = File(pil_io, name=image.name)
+    return pil_file
+
+
+
 
 
 class Person(models.Model):
@@ -23,6 +44,12 @@ class Person(models.Model):
         else:
             return self.name
 
+    def save(self, *args, **kwargs):
+        self.avatar = resize_image(self.avatar, size=(128,128))
+        super().save(*args, **kwargs)
+
+        
+
 
 class Following(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="follower")
@@ -34,6 +61,7 @@ class Following(models.Model):
 class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=MEDIA_FOLDER_IMAGE)
+    thumbnail = models.ImageField(upload_to=MEDIA_FOLDER_IMAGE, default=None, null=True)
     title = models.CharField(max_length=100)
     description = models.TextField(default="No description yet...")
     like_count = models.IntegerField(default=0)
@@ -55,6 +83,11 @@ class Image(models.Model):
                 "short": self.description[:100],
                 "long": self.description[100:],
             }
+
+
+    def save(self, *args, **kwargs):
+        self.thumbnail = resize_image(self.image, size=(600, 480))
+        super().save(*args, **kwargs)
 
 
 

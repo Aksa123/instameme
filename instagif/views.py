@@ -1,3 +1,4 @@
+from ast import Bytes
 import re
 from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
@@ -13,11 +14,15 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.db import connection
 from django.contrib.auth import authenticate, update_session_auth_hash, login, logout
+from django.core.files import File
 from django.core.files.base import ContentFile
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from .models import Following, Person, Image, LikedImage, SavedImage, CommentImage, Tag, TagImage
 from datetime import datetime
 import json
 import base64
+from io import BytesIO, StringIO
+from PIL import Image as PIL_Image
 
 
 # Create your views here.
@@ -328,7 +333,7 @@ def index(request):
         id = image.id
         title = image.title
         like_count = image.likedimage_set.count()
-        src = image.image.url
+        src = image.thumbnail.url
         description = image.description.strip()
         description_short = description[:170]
         description_long = description[170:]
@@ -403,7 +408,7 @@ def search_tag(request, tag_name):
     for tag_image in tag_images:
         images.append({
             "id": tag_image.image.id.hex,
-            "src": tag_image.image.image.url,
+            "src": tag_image.image.thumbnail.url,
         })
 
     return render(request, "instagif/search.html", context={
@@ -420,7 +425,7 @@ def search(request):
     images_list = []
     for image in images:
         id = image.id.hex
-        src = image.image.url
+        src = image.thumbnail.url
         images_list.append({
             "id": id,
             "src": src
@@ -610,6 +615,8 @@ def upload(request):
             tags = []
             for tag in tags_str:
                 tags.append(int(tag))
+            
+            print((image))
 
             format, imgstr = image.split(';base64,')
             ext = format.split('/')[-1] 
@@ -669,7 +676,9 @@ def signup_page(request):
                 "reason": "Email address is alrady in use.",
             })
         else:
+            None
             user =  User.objects.create_user(username=email, first_name=name, password=password)
+
             person = Person(user=user, email=email, name=name, avatar=avatar)
             person.save()
 
@@ -679,6 +688,7 @@ def signup_page(request):
                 "reason": "Registered successfully. You will be redirected to the index page soon."
             })
 
+       
     else:
         return render(request, "instagif/signup.html")
 

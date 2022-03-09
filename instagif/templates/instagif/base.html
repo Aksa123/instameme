@@ -14,7 +14,7 @@
     <div id="super-container">
         <div id="top-bar-container">
             <div id="top-bar">
-                <a id="logo" class="top-bar-item" href="{% url 'instagif:index' %}" >Instagif</a>
+                <a id="logo" class="top-bar-item" href="{% url 'instagif:index' %}" >Instameme</a>
                 <div id="search" class="top-bar-item">
                     <div id="search-input-container">
                         <input type="text" id="search-input" value="{{ query }}" placeholder="Search..." >
@@ -67,6 +67,14 @@
                         <div id="account-dropdown" class="account-active-background display-none">
                             <div id="account-dropdown-triangle"></div>
                             {% if request.user.is_authenticated %}
+
+                            {% if request.user.person.is_admin == True %}
+                            <a href="{% url 'instagif:admin_home' %}" id="account-profile" class="account-dropdown-item-link">
+                                <img src="{% static 'instagif/hacker.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Admin</p>
+                            </a>
+                            {% endif %}
+
                             <a href="{% url 'instagif:profile' %}" id="account-profile" class="account-dropdown-item-link">
                                 <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
                                 <p class="account-dropdown-item-text">Profile</p>
@@ -87,6 +95,10 @@
                             <a href="{% url 'instagif:login' %}" id="account-login" class="account-dropdown-item-link">
                                 <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
                                 <p class="account-dropdown-item-text">Log in</p>
+                            </a>
+                            <a href="{% url 'instagif:signup' %}" id="account-login" class="account-dropdown-item-link">
+                                <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
+                                <p class="account-dropdown-item-text">Sign up</p>
                             </a>
                             {% endif %}
                         </div>
@@ -139,7 +151,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
-    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+    <!-- <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script> -->
     {% block style %}
     {% endblock %}
 

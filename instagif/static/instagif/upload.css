@@ -80,13 +80,19 @@
     border: 1px solid cornflowerblue;
 } */
 
+#base-content-container{
+    margin-bottom: 0;
+    overflow-y: hidden;
+}
 
 
 #content{
     width: 100%;
-    height: 660px;
+    height: calc(100vh - var(--top-bar-height));
     background-color: whitesmoke;
-    border: 1px dashed var(--border-color);
+    border-right: 1px dashed var(--border-color);
+    border-left: 1px dashed var(--border-color);
+    border-bottom: 1px dashed var(--border-color);
 }
 
 #upload-form{
@@ -108,10 +114,51 @@
 }
 
 #preview-img{
-    width: 100%;
-    max-width: 600px;
-    max-height: 600px;
+    /* width: 100%; */
+    max-width: 100%;
+    max-height: calc(100vh - var(--top-bar-height) - 60px);
     object-fit: contain;
+}
+
+#live-image-container{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    /* display: none; */
+    z-index: -1;
+}
+
+#live-image-container-flex{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#live-img{
+    max-width: 1600px;
+    max-height: 1600px;
+    object-fit: contain;
+}
+
+#live-text-container-top{
+    top: 10px;
+}
+
+#live-text-container-bottom{
+    bottom: 10px;
+}
+
+#live-div-text-top{
+    top: 10px;
+    border: 0;
+}
+
+#live-div-text-bottom{
+    bottom: 10px;
+    border: 0;
 }
 
 .text-container{
@@ -136,6 +183,15 @@
     background-color: transparent;
     overflow-y: hidden;
     resize: none;
+}
+
+.live-text-container{
+    width: 85%;
+    min-height: 30px;
+    position: absolute;
+    left: auto;
+    right: auto;
+    background-color: transparent;
 }
 
 .text-input-border{
@@ -300,3 +356,7 @@ textarea{
     pointer-events: none;
 }
 
+/* re-override style from Reboot? */
+p{
+    margin-bottom: 0;
+}

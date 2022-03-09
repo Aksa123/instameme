@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index2 page</title>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Poppins:wght@200;300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'personal/index2.css' %}">
+
+</head>
+<body>
+    <div id="super-container">
+        <div id="super-container-linear-gradient"></div>
+        <div id="topbar">
+            <div id="topbar-item-home" class="topbar-item">
+                <a href="#super-container" class="topbar-item-link">Home</a>
+            </div>
+            <div id="topbar-item-skills" class="topbar-item">
+                <a href="#skills" class="topbar-item-link">Skills</a>
+            </div>
+            <div id="topbar-item-projects" class="topbar-item">
+                <a href="#projects" class="topbar-item-link">Projects</a>
+            </div>
+            <div id="topbar-item-contact" class="topbar-item">
+                <a href="#contact" class="topbar-item-link">Contact</a>
+            </div>
+        </div>
+        <div id="main">
+            <div id="about" class="main-item">
+                <div id="detail">
+                    <div id="title" class="title">
+                        Hello, 
+                        <br>
+                            <div id="title-add-container">
+                                <span id="title-add1"><i>I'm Aksa</i></span> <span id="title-add2"><i>I'm Aksa</i></span>
+                            </div>
+                    </div>
+                    <div id="description">
+                        Efficient database engineer with 2+ years of experience and proven knowledge of database design, application development, and Python programming. Aiming to leverage my skills to successfully fill the remote System QA Engineer role at your company.
+                    </div>
+                </div>
+                <img src="{% static 'personal/corridor.jpg' %}" alt="my photo" id="photo">
+            </div>
+            <div id="skills" class="main-item">
+                <div class="bg-container">
+                    <div class="bg-linear-top"></div>
+                    <img src="{% static 'personal/code.jpg' %}" alt="mountain image" class="bg-img">
+                    <div class="bg-linear-left"></div>
+                    <div class="bg-linear-bottom"></div>
+                </div>
+                <div class="main-item-content">
+                    <div class="title">Skills <span class="title-plus">+</span></div>
+                    <div id="skill-grid">
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">01</span> <span class="skill-item-fronttext">MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">02</span> <span class="skill-item-fronttext">PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">03</span> <span class="skill-item-fronttext">Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">04</span> <span class="skill-item-fronttext">PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">05</span> <span class="skill-item-fronttext">Javascript</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">06</span> <span class="skill-item-fronttext">Django</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">07</span> <span class="skill-item-fronttext">Laravel</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">08</span> <span class="skill-item-fronttext">Holistics</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-item-backtext">09</span> <span class="skill-item-fronttext">Metabase</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="experiences" class="main-item">
+                <div class="bg-container">
+                    <div class="bg-linear-top"></div>
+                    <img src="{% static 'personal/work.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <div class="bg-linear-left"></div>
+                    <div class="bg-linear-bottom"></div>
+                </div>
+                <div class="main-item-content">
+                    <div class="title">Experiences <span class="title-plus">+</span></div>
+                    <div class="exp-item">
+                        <div class="exp-item-title">
+                            <span>J Passport</span> <span class="exp-title-date">May 2018 - Sep 2021</span>
+                        </div>
+                        <div class="exp-item-position"><i>Data Engineer</i></div>
+                        <ul class="exp-item-ul">
+                            <li>Created dynamic admin pages for financial and user-engagement reports.</li>
+                            <li>Migrated sales data in major feature-merging projects.</li>
+                            <li>Led a project to refund points of users who were affected by Covid-19 lockdown.</li>
+                            <li>Supported sales team with data ETL and technical expertise.</li>
+                            <li>Spearheaded automation for complex queries in order to simplify data flow, lower potential bug risks, and improve system performance.</li>
+                            <li>Beta testing.</li>
+                            <li>Provided customer service via email and Facebook chat.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-item-title">
+                            <span>PT Kreasi Sejahtera Teknologi</span> <span class="exp-title-date">Sep 2017 - Feb 2018</span>
+                        </div>
+                        <div class="exp-item-position"><i>Data Analyst</i></div>
+                        <ul class="exp-item-ul">
+                            <li>Improved quality of data by standardizing and removing duplicate records.</li>
+                            <li>Managed five data entry people by scheduling tasks and daily reports.</li>
+                            <li>Efficient use of Excel and MySQL tools resulted in the best performing data entry team in the office.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="projects" class="main-item">
+                <div class="title">Projects <span class="title-plus">+</span></div>
+                <div class="project-flex">
+                    <div class="project-flex-item">
+                        <div class="project-item">
+                            <a href="{% url 'instagif:index' %}" class="project-item-link">
+                                <img src="{% static 'personal/phone.jpg' %}" alt="" class="project-item-img">
+                                <div class="project-item-title-container">
+                                    <div class="project-item-title">Instameme</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-flex-item margin-left-20">
+                        <div class="project-item ">
+                            <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
+                            <div class="project-item-title-container">
+                                <div class="project-item-title">None Yet</div>
+                            </div>
+                        </div>
+                        <div class="project-item ">
+                            <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
+                            <div class="project-item-title-container">
+                                <div class="project-item-title">None Yet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contact" class="main-item">
+                <div class="bg-container">
+                    <div class="bg-linear-top"></div>
+                    <img src="{% static 'personal/telephone.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <div class="bg-linear-left"></div>
+                    <div class="bg-linear-bottom"></div>
+                </div>
+                <div class="main-item-content">
+                    <div class="title">Contact Me <span class="title-plus">+</span></div>
+                    <div id="contact-text">
+                        Let me know if you are interested in working with me or have any questions :)
+                    </div>
+                    <div class="contact-item">
+                        <img src="{% static 'personal/email.png' %}" alt="email-icon" class="contact-item-img">
+                        <div class="contact-item-text"><a class="email-link" href="mailto: praty.axa@gmail.com">praty.axa@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="{% static 'personal/whatsapp.png' %}" alt="phone-icon" class="contact-item-img">
+                        <div class="contact-item-text">+62 81316462152</div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div id="attributions" class="main-item">
+                <div class="bg-container">
+                    <div class="bg-linear-top"></div>
+                    <img src="{% static 'personal/gift2.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <div class="bg-linear-left"></div>
+                    <div class="bg-linear-bottom"></div>
+                </div>
+                <div class="main-item-content">
+                    <div class="title">Attributions <span class="title-plus">+</span></div>
+                    <ul class="attributions-ul">
+                        <li><a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a></li>
+                        <li><a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Freepik - Flaticon</a></li>
+                        <li><a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Fathema Khanom - Flaticon</a></li>
+                        <li><a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Ilham Fitrotul Hayat - Flaticon</a></li>
+                        <li><a href="https://www.pexels.com/photo/body-of-water-in-forest-632280/">Photo by Jonathan Meyer from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/scenic-view-of-mountain-and-hills-672451/">Photo by Archie Binamira from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/tea-set-and-newspaper-placed-on-round-table-near-comfortable-chair-3837409/">Photo by Ekrulila from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/person-holding-silver-iphone-7-887751/">Photo by PhotoMIX Company from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/iphone-on-table-1156684/">Photo by Arun Thomas from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/black-rotary-telephone-on-white-surface-1416530/">Photo by chepté cormani from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/photo-of-two-brown-wrapped-gifts-on-wooden-table-1693650/">Photo by Ylanite Koppens from Pexels</a></li>
+                        <li><a href="https://www.pexels.com/photo/three-assorted-color-boxes-3298036/"></a>
+                            Photo by Lucie Liz from Pexels
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer"></div>
+
+
+
+    </div>
+    <script src="{% static 'personal/index2.js' %}"></script>
+</body>
+</html>

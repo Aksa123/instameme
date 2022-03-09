@@ -2,15 +2,18 @@
     --media-min-width: 700px;
     --media-comment-container-width: 400px;
     --form-height: 60px;
+    --content-margin-vertical: 50px;
 }
 
 #super-container{
     margin-bottom: 0;
+    padding-top: var(--content-margin-vertical);
 }
 
 #base-content-container{
     margin-top: 0;
-    height: calc(100% - var(--top-bar-height));
+    margin-bottom: 0;
+    height: calc(100% - var(--content-margin-vertical));
 }
 
 #detail-content{
@@ -22,7 +25,6 @@
     padding-top: 10px;
     background-color: var(--item-background);
     border: 1px solid var(--border-color);
-    border-top: 0;
     position: relative;
 }
 
@@ -312,7 +314,7 @@
 
 @media only screen and (min-width: 760px) {
     #super-container{
-        min-height: calc(100vh - var(--top-bar-height));
+        height: calc(100vh - var(--top-bar-height));
     }
 
     .content-item-gif-comment-container{
@@ -320,7 +322,7 @@
         justify-content: flex-start;
         align-items: flex-start;
         position: relative;
-        height: calc(100% - 70px);
+        height: calc(100% - 75px);
     }
 
     .content-item-gif{
@@ -368,7 +370,6 @@
         margin-right: 0;
         border-left: 0;
         border-right: 0;
-        border-bottom: var(--border-color) solid 1px;
     }
 
     #content-item-action-likes-number{

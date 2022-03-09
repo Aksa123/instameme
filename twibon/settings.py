@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'android.apps.AndroidConfig',
     'animelist.apps.AnimelistConfig',
     'instagif.apps.InstagifConfig',
+    'personal.apps.PersonalConfig',
 
     'mod_wsgi.server',
 

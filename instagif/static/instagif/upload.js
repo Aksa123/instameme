@@ -11,6 +11,12 @@ let next_button = document.querySelector("#input-next")
 let upload_overlay = document.querySelector("#upload-overlay")
 let back_button = document.querySelector("#upload-cancel")
 
+let live_img_container = document.querySelector("#live-image-container")
+let live_img_flex = document.querySelector("#live-image-container-flex")
+let live_img = document.querySelector("#live-img")
+let live_div_text_top = document.querySelector("#live-div-text-top")
+let live_div_text_bottom = document.querySelector("#live-div-text-bottom")
+let live_text_containers = document.querySelectorAll(".live-text-container")
 
 text_containers.forEach(text_container => {
     let text_input = text_container.querySelector("textarea.text-input")
@@ -19,6 +25,13 @@ text_containers.forEach(text_container => {
     text_input.addEventListener("input", (e) => {
         text_input.value = text_input.value.toUpperCase()
         text_div.textContent = text_input.value
+
+        if (text_input.id === "input-text-top"){
+            live_div_text_top.innerHTML = text_input.value.toUpperCase()
+        }
+        else if (text_input.id === "input-text-bottom"){
+            live_div_text_bottom.innerHTML = text_input.value.toUpperCase()
+        }
     })
 })
 
@@ -31,6 +44,11 @@ function refreshInputs(){
         text_input.classList.toggle("display-none", false)
         text_input.value = ""
         text_div.classList.toggle("display-none", true)
+        text_div.innerHTML = ""
+    })
+
+    live_text_containers.forEach(live_text_container => {
+        let text_div = live_text_container.querySelector(".text-div")
         text_div.innerHTML = ""
     })
 }
@@ -46,8 +64,17 @@ input_img.addEventListener("change", () => {
     preview_img.src = src
     next_button.classList.toggle("display-none", false)
     input_img_label.classList.replace("margin-right-auto", "margin-right-20")
+
+    live_img.src = src
 })
 
+live_img.onload = function () {
+    let live_img_height = getComputedStyle(live_img).height
+    
+    live_div_text_top.style.fontSize = (parseInt(live_img_height)/15) + "px"
+    live_div_text_bottom.style.fontSize = (parseInt(live_img_height)/15) + "px"
+    console.log(live_div_text_top)
+}
 
 next_button.addEventListener("click", (e) => {
     e.preventDefault()
@@ -76,12 +103,12 @@ upload_form.addEventListener("submit", (e) => {
         text_div.innerHTML = text_div.textContent.replace(/(?:\r\n|\r|\n)/g, "<br>");
     })
 
-    html2canvas(preview_img_container).then(canvas => {
+    html2canvas(live_img_container).then(canvas => {
         let url = new URL(window.location.origin + "/instagif/upload/")
         let csrf = document.querySelector("[name=csrfmiddlewaretoken]").value
         let name = input_img.files[0].name.split(".")[0]
         let title = document.querySelector("#input-title").value
-        let image = canvas.toDataURL("image/png", 1.0)
+        let image = canvas.toDataURL("image/jpeg", 0.5)
         let description = document.querySelector("#description").value
         let tags_raw = document.querySelector("#tags").selectedOptions
         let tags = ""
@@ -94,6 +121,14 @@ upload_form.addEventListener("submit", (e) => {
                 tags += tag + "-"
             }
         }
+
+        let link = document.createElement("a")
+        link.href = image
+        link.download = "canvas_image.png"
+        document.body.appendChild(link)
+        link.click()
+
+
 
         let form_data = new FormData()
         form_data.append("image", image)
