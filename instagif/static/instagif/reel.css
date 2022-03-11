@@ -74,6 +74,25 @@ a:active {
     border-radius: 50%;
 }
 
+#sign-container{
+    position: fixed;
+    top: 20px;
+    margin-left: 80px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.sign-hide{
+    transform: scaleX(0);
+}
+
+#sign-text{
+    margin-left: 5px;
+    transition-duration: 200ms;
+    transform-origin: left;
+}
+
 #reel-super-container-scroll-wrapper{
     position: absolute;
     top: 0;
@@ -98,9 +117,19 @@ a:active {
     position: relative;
 }
 
+.bg-linear{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(rgba(0,0,0,0.5), transparent 10%, transparent 80%, rgba(0,0,0,0.5));
+}
 
 .opacity-less{
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .content-img{
@@ -140,6 +169,7 @@ a:active {
     flex-direction: column;
     justify-content: flex-end;
     transition-duration: 350ms;
+    z-index: 3;
 }
 
 .title{
@@ -194,6 +224,7 @@ a:active {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    z-index: 3;
 }
 
 .action-item-container{
@@ -253,3 +284,4 @@ a:active {
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
 }
+

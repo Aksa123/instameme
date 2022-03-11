@@ -122,13 +122,11 @@ upload_form.addEventListener("submit", (e) => {
             }
         }
 
-        let link = document.createElement("a")
-        link.href = image
-        link.download = "canvas_image.png"
-        document.body.appendChild(link)
-        link.click()
-
-
+        // let link = document.createElement("a")
+        // link.href = image
+        // link.download = "canvas_image.png"
+        // document.body.appendChild(link)
+        // link.click()
 
         let form_data = new FormData()
         form_data.append("image", image)

@@ -28,6 +28,7 @@ function startUp(){
     let trigger_content = document.querySelector(".trigger").parentElement
     addIntersectionObserverToTriggerContent(trigger_content)
 
+    AddFunctionToSign()
 }
 
 function addFunctionToDescription(reel_content){
@@ -37,19 +38,25 @@ function addFunctionToDescription(reel_content){
         let show_less = reel_content.querySelector(".show-less")
         let content_image = reel_content.querySelector(".content-img")
         let detail_container = reel_content.querySelector(".detail-container")
-    
-        show_more.addEventListener("click", () => {
+
+        function maxDetail(){
             detail_container.expand = true        
             description_long.classList.toggle("display-none", false)
             show_more.classList.toggle("display-none", true)
             detail_container.style.height = "250px"
             content_image.classList.toggle("opacity-less", true)
+        }
+        function minDetail(){
+            detail_container.expand = false
+            detail_container.style.height = "150px"
+            content_image.classList.toggle("opacity-less", false)
+        }
     
-            show_less.addEventListener("click", () => {
-                detail_container.expand = false
-                detail_container.style.height = "150px"
-                content_image.classList.toggle("opacity-less", false)
-            })
+        show_more.addEventListener("click", () => {
+            maxDetail()
+        })
+        show_less.addEventListener("click", () => {
+            minDetail()
         })
     
         detail_container.addEventListener("transitionend", () => {
@@ -62,12 +69,24 @@ function addFunctionToDescription(reel_content){
 }
 function addContentSwipeFunctionToContentImage(reel_content){
     let content_image = reel_content.querySelector(".content-img")
-    content_image.addEventListener("click", (e) => {
+    content_image.addEventListener("mousedown", (e) => {
+        // e.preventDefault()
+        console.log(e.button)
         if (e.button === 0){                                                         // if left-clicked
             let current_reel = content_image.parentElement
             let next_reel = current_reel.nextElementSibling
             if (next_reel === null){
                 return false
+            }
+            next_reel.scrollIntoView()
+            next_reel.scrollIntoView(true)
+            next_reel.scrollIntoView({behavior: "smooth"})
+        }
+        else if (e.button === 2){
+            let current_reel = content_image.parentElement
+            let next_reel = current_reel.previousElementSibling
+            if (next_reel === null){
+                return false                                                            // don't do anything if no more contents
             }
             next_reel.scrollIntoView()
             next_reel.scrollIntoView(true)
@@ -88,6 +107,7 @@ function addContentSwipeFunctionToContentImage(reel_content){
         
         return false                // to disable context-menu ???
     })
+
 }
 
 function addLikeFunction(reel_content){
@@ -249,5 +269,19 @@ function addIntersectionObserverToTriggerContent(reel_content){
     observer.observe(reel_content)
 }
 
+function AddFunctionToSign(){
+    const sign_icon = document.querySelector("#sign-icon")
+    const sign_text = document.querySelector("#sign-text")
+    console.log("start")
+    sign_icon.addEventListener("mouseover", () => {
+        sign_text.classList.toggle("sign-hide", false)
+        console.log("in")
+    })
+    sign_icon.addEventListener("mouseout", () => {
+        sign_text.classList.toggle("sign-hide", true)
+        console.log("out")
+    })
+
+}
 
 startUp()

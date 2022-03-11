@@ -1,6 +1,6 @@
 from ast import Bytes
 import re
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, FileResponse
 from django.shortcuts import redirect, render
 from django.http import request, HttpResponse
 from django.template.loader import render_to_string
@@ -333,7 +333,7 @@ def index(request):
         id = image.id
         title = image.title
         like_count = image.likedimage_set.count()
-        src = image.thumbnail.url
+        src = image.image.url
         description = image.description.strip()
         description_short = description[:170]
         description_long = description[170:]
@@ -445,7 +445,7 @@ def profile(request):
     for saved_item in saved_items:
         saved_items_list.append({
             "id": saved_item.image.id.hex,
-            "url": saved_item.image.image.url,
+            "url": saved_item.image.thumbnail.url,
         })        
     
     return render(request, "instagif/profile.html", context={
@@ -692,6 +692,19 @@ def signup_page(request):
     else:
         return render(request, "instagif/signup.html")
 
+
+def download(request, image_id):
+
+    try:
+        image = Image.objects.get(pk=image_id)
+        path = image.image.path
+
+        return FileResponse(open(path, "rb"), as_attachment=True)
+    except:
+        return JsonResponse({"status": "Error", "messege": "File not found!"})
+    
+
+
 def api_logout(request):
     if request.method == "POST":
         logout(request)
@@ -831,6 +844,7 @@ def api_edit_profile(request):
             person.avatar = request.FILES["input_avatar"]
         person.save()
 
+
         # check if change-password-checkbox is selected or not
         if password_checkbox:
             if ("input_old_password" in request.POST) and ("input_new_password" in request.POST) and ("input_new_password_confirm" in request.POST):
@@ -861,20 +875,21 @@ def api_edit_profile(request):
 
                 return JsonResponse({
                     "status": "SUCCESS",
-                    "message": "Profile has been successfully updated!"
+                    "messege": "Profile has been successfully updated!"
                 })
 
             else:
-                return HttpResponse("ERROR: password inputs must be filled!")       
+                return HttpResponse("ERROR: password inputs must be filled!")   
 
-        user.username = new_email
-        user.first_name = new_name
-        user.save()
+        else:
+            user.username = new_email
+            user.first_name = new_name
+            user.save()
 
-        return JsonResponse({
-            "status": "SUCCESS",
-            "message": "Profile has been successfully updated!"
-        })
+            return JsonResponse({
+                "status": "SUCCESS",
+                "message": "Profile has been successfully updated!"
+            })
     else:
         return HttpResponse("ERROR: Post method and XMLHTTPRequest header are expected!")
 

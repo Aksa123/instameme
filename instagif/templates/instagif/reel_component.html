@@ -6,8 +6,8 @@
     {% if image.trigger %}
     <input class="trigger" id="trigger_{{ image.id }}" type="hidden" name="trigger" value="{{ image.trigger }}">
     {% endif %}
-    <!-- use thumbnail cuz it has the same quality but much lower size -->
-    <img class="content-img" src="{{ image.thumbnail.url }}" alt="content img">
+    <div class="bg-linear"></div>
+    <img class="content-img" src="{{ image.image.url }}" alt="content img">
     <div class="info-container">
         <div class="detail-container">
             <div class="detail-top-container">

@@ -55,12 +55,10 @@
             </button>
         </div>
         <div class="content-item-action-item">
-            {% if user %}
-            <button class="content-item-action-item-button share-button">
-            {% else %}
-            <button class="content-item-action-item-button share-button button-disabled" disabled>
-            {% endif %}
-                <img src="{% static 'instagif/share.png' %}" alt="share image" class="content-item-action-item-img">
+            <button class="content-item-action-item-button">
+                <a class="download-link" href="{% url 'instagif:download' item.id %}">
+                    <img src="{% static 'instagif/download.png' %}" alt="share image" class="content-item-action-item-img">
+                </a>
             </button>
         </div>
         <div class="content-item-action-item content-item-action-item-save">

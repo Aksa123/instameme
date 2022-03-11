@@ -112,9 +112,9 @@ function addActionTooltip(content_item){
     save_btn.tooltip_text = "save"
     let comment_btn = content_item.querySelector(".comment-button")
     comment_btn.tooltip_text = "comment"
-    let share_btn = content_item.querySelector(".share-button")
-    share_btn.tooltip_text = "share"
-    let actions_list = [like_btn, save_btn, comment_btn, share_btn]
+    // let share_btn = content_item.querySelector(".share-button")
+    // share_btn.tooltip_text = "share"
+    let actions_list = [like_btn, save_btn, comment_btn]
 
     actions_list.forEach((action_btn) => {
         let action_item = action_btn.parentElement

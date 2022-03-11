@@ -335,3 +335,8 @@
 #tags-container{
     margin-bottom: 10px;
 }
+
+.download-link{
+    width: 100%;
+    height: 100%;
+}

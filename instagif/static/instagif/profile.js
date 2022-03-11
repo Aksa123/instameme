@@ -79,7 +79,11 @@ function addSubmitEventListener(){
         let input_new_password_confirm = document.querySelector("#confirm-new-password-input").value
 
         let form_data = new FormData()
-        form_data.append("input_avatar", input_avatar)
+        if (input_avatar){
+            form_data.append("input_avatar", input_avatar)
+            console.log("Avatar is changed")
+        }
+        
         form_data.append("input_name", input_name)
         form_data.append("input_email", input_email)
         form_data.append("input_password_checkbox", input_password_checkbox)
@@ -99,8 +103,8 @@ function addSubmitEventListener(){
         }).then((res) => res.json())
         .then((data) => {
             let status = data.status
-            let message = data.message
-            alert(message)
+            let messege = data.messege
+            alert(messege)
             if (status === "SUCCESS"){
                 setTimeout(() => {
                     window.location.reload()

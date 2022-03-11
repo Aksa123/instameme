@@ -16,6 +16,9 @@
         <a id="back-link" href="{% url 'instagif:index' %}">
             <img id="back-img" src="{% static 'instagif/back.png' %}" alt=" back img">
         </a>
+        <p id="sign-container">
+            <i id="sign-icon" class="bi bi-question-circle"></i><span id="sign-text" class="sign-hide">Left-click to swipe forward; right-click to swipe backward</span>
+        </p>
         {% for image in images %}
             {% include 'instagif/reel_component.html' %}
         {% endfor %}

@@ -19,7 +19,8 @@ def resize_image(image, size=(128, 128)):
     if ext == "JPG":
         ext = "JPEG"
     pil_image = pil_image.convert("RGB")
-    # pil_image.thumbnail(size, PIL_Image.ANTIALIAS)
+    if size is not None:
+        pil_image.thumbnail(size, PIL_Image.ANTIALIAS)
     pil_io = BytesIO()
     pil_image.save(pil_io, format='JPEG', quality=50)
     pil_file = File(pil_io, name=image.name)
@@ -86,7 +87,7 @@ class Image(models.Model):
 
 
     def save(self, *args, **kwargs):
-        self.thumbnail = resize_image(self.image, size=(600, 480))
+        self.thumbnail = resize_image(self.image, size=(360, 360))
         super().save(*args, **kwargs)
 
 

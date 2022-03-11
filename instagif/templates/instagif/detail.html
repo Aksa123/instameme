@@ -45,9 +45,16 @@
                                 {% endif %}
                             </button>
                         </div>
-                        <div class="content-item-action-item">
+                        <!-- <div class="content-item-action-item">
                             <button id="share-button" class="content-item-action-item-button">
                                 <img src="{% static 'instagif/share.png' %}" alt="share image" class="content-item-action-item-img">
+                            </button>
+                        </div> -->
+                        <div class="content-item-action-item">
+                            <button id="download-button" class="content-item-action-item-button">
+                                <a href="{% url 'instagif:download' image.id %}" class="download-link">
+                                    <img src="{% static 'instagif/download.png' %}" alt="download icon" class="content-item-action-item-img">
+                                </a>
                             </button>
                         </div>
                         <div id="action-save" class="content-item-action-item">
