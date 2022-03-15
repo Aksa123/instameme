@@ -47,3 +47,9 @@
         gap: 20px;
     }
 }
+
+@media only screen and (max-width: 480px){
+    #search-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

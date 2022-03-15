@@ -40,7 +40,9 @@ input:focus{
 }
 
 #login-box{
-    width: 350px;
+    width: 100%;
+    max-width: 360px;
+    min-width: 300px;
     height: 550px;
     margin-left: auto;
     margin-right: auto;
@@ -168,7 +170,9 @@ input:focus{
 
 
 #signup-link-container{
-    width: 350px;
+    width: 100%;
+    max-width: 360px;
+    min-width: 300px;
     height: 70px;
     margin-left: auto;
     margin-right: auto;

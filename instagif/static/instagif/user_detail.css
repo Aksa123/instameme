@@ -22,8 +22,10 @@
 }
 
 #user-detail-followers-container{
-    flex-grow: 1;
+    max-width: 350px;
     height: 100%;
+    margin-right: auto;
+    flex-grow: 1;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -104,5 +106,38 @@
 @media only screen and (min-width: 900px){
     #images-container{
         gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    #images-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #user-detail-container{
+        height: auto;
+        flex-direction: column;
+    }
+
+    #user-detail-avatar{
+        width: 60px;
+        height: 60px;
+        margin-right: 0;
+        margin-bottom: 15px;
+        
+    }
+
+    #user-detail-followers-container{
+        width: 100%;
+        margin-left: auto;
+        justify-content: center;
+    }
+
+    .user-detail-followers-item-number{
+        font-size: 20px;
+    }
+
+    .user-detail-followers-item-text{
+        text-transform: lowercase;
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index2 page</title>
+    <title>About Me</title>
     {% load static %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,17 +18,22 @@
     <div id="super-container">
         <div id="super-container-linear-gradient"></div>
         <div id="topbar">
-            <div id="topbar-item-home" class="topbar-item">
-                <a href="#super-container" class="topbar-item-link">Home</a>
-            </div>
-            <div id="topbar-item-skills" class="topbar-item">
-                <a href="#skills" class="topbar-item-link">Skills</a>
-            </div>
-            <div id="topbar-item-projects" class="topbar-item">
-                <a href="#projects" class="topbar-item-link">Projects</a>
-            </div>
-            <div id="topbar-item-contact" class="topbar-item">
-                <a href="#contact" class="topbar-item-link">Contact</a>
+            <div id="dropdown">
+                <button id="dropdown-button">Menu</button>
+                <div id="menu-container">
+                    <div id="topbar-item-home" class="topbar-item">
+                        <a href="#super-container" class="topbar-item-link">Home</a>
+                    </div>
+                    <div id="topbar-item-skills" class="topbar-item">
+                        <a href="#skills" class="topbar-item-link">Skills</a>
+                    </div>
+                    <div id="topbar-item-projects" class="topbar-item">
+                        <a href="#projects" class="topbar-item-link">Projects</a>
+                    </div>
+                    <div id="topbar-item-contact" class="topbar-item">
+                        <a href="#contact" class="topbar-item-link">Contact</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="main">
@@ -45,7 +50,10 @@
                         Efficient database engineer with 2+ years of experience and proven knowledge of database design, application development, and Python programming. Aiming to leverage my skills to successfully fill the remote System QA Engineer role at your company.
                     </div>
                 </div>
-                <img src="{% static 'personal/photo.jpeg' %}" alt="my photo" id="photo">
+                <div id="photo-container">
+                    <img src="{% static 'personal/photo.jpeg' %}" alt="my photo" id="photo">
+                    <div id="photo-gradient"></div>
+                </div>
             </div>
             <div id="skills" class="main-item">
                 <div class="bg-container">
@@ -99,7 +107,7 @@
                     <div class="title">Experiences <span class="title-plus">+</span></div>
                     <div class="exp-item">
                         <div class="exp-item-title">
-                            <span>J Passport</span> <span class="exp-title-date">May 2018 - Sep 2021</span>
+                            <span class="exp-item-company">J Passport</span> <span class="exp-title-date">May 2018 - Sep 2021</span>
                         </div>
                         <div class="exp-item-position"><i>Data Engineer</i></div>
                         <ul class="exp-item-ul">
@@ -114,7 +122,7 @@
                     </div>
                     <div class="exp-item">
                         <div class="exp-item-title">
-                            <span>PT Kreasi Sejahtera Teknologi</span> <span class="exp-title-date">Sep 2017 - Feb 2018</span>
+                            <span class="exp-item-company">PT Kreasi Sejahtera Teknologi</span> <span class="exp-title-date">Sep 2017 - Feb 2018</span>
                         </div>
                         <div class="exp-item-position"><i>Data Analyst</i></div>
                         <ul class="exp-item-ul">
@@ -126,29 +134,61 @@
                 </div>
             </div>
             <div id="projects" class="main-item">
-                <div class="title">Projects <span class="title-plus">+</span></div>
-                <div class="project-flex">
-                    <div class="project-flex-item">
-                        <div class="project-item">
-                            <a href="{% url 'instagif:index' %}" class="project-item-link">
-                                <img src="{% static 'personal/phone.jpg' %}" alt="" class="project-item-img">
-                                <div class="project-item-title-container">
-                                    <div class="project-item-title">Instameme</div>
+                <div class="main-item-content">
+                    <div class="title">Projects <span class="title-plus">+</span></div>
+                    <div id="project-flex-extra-container">
+                        <button id="project-direction-left">
+                            <img src="{% static 'personal/arrow-left.png' %}" alt="arrow left" class="project-direction-img">
+                        </button>
+                        <button id="project-direction-right">
+                            <img src="{% static 'personal/arrow-right.png' %}" alt="arrow left" class="project-direction-img">
+                        </button>
+                        <div id="project-flex-container">
+                            <div class="project-flex">
+                                <div class="project-item">
+                                    <a href="{% url 'instagif:index' %}" class="project-item-link">
+                                        <img src="{% static 'personal/phone.jpg' %}" alt="" class="project-item-img">
+                                        <div class="project-item-title-container">
+                                            <div class="project-item-title">Instameme</div>
+                                        </div>
+                                    </a>
+                                    <div class="project-item-title2">Instameme <button class="show-desc">Detail</button></div>
+                                    <div class="project-item-desc project-item-desc-hide">
+                                        Instagram clone.
+                                        <br>
+                                        Stack used:
+                                        <ul>
+                                            <li>Django</li>
+                                            <li>Javascript (pure)</li>
+                                            <li>Bootstrap 5 (admin page)</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-flex-item margin-left-20">
-                        <div class="project-item ">
-                            <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
-                            <div class="project-item-title-container">
-                                <div class="project-item-title">None Yet</div>
-                            </div>
-                        </div>
-                        <div class="project-item ">
-                            <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
-                            <div class="project-item-title-container">
-                                <div class="project-item-title">None Yet</div>
+                                <div class="project-item">
+                                    <a href="#" class="project-item-link inactive-link">
+                                        <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
+                                        <div class="project-item-title-container">
+                                            <div class="project-item-title">None Yet</div>
+                                        </div>
+                                    </a>
+                                    <div class="project-item-title2">None Yet <button class="show-desc">Detail</button></div>
+                                    <div class="project-item-desc project-item-desc-hide">
+                                        :)
+                                    </div>
+                                </div>
+                                <div class="project-item">
+                                    <a href="#" class="project-item-link inactive-link">
+                                        <img src="{% static 'personal/phone2.jpg' %}" alt="" class="project-item-img">
+                                        <div class="project-item-title-container">
+                                            <div class="project-item-title">None Yet</div>
+                                        </div>
+                                    </a>
+                                    <div class="project-item-title2">None Yet <button class="show-desc">Detail</button></div>
+                                    <div class="project-item-desc project-item-desc-hide">
+                                        :)
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

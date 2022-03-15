@@ -42,7 +42,7 @@ a:active {
 
 #reel-super-container{
     width: 100vw;
-    min-width: 480px;
+    min-width: 300px;
     max-width: 600px;
     height: 100vh;
     margin-left: auto;
@@ -279,9 +279,32 @@ a:active {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgba(255, 255, 255, 0.7);
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
 }
 
+@media only screen and (max-width: 480px) {
+    #back-link{
+        width: 40px;
+        height: 40px;
+    }
+
+    .action-image{
+        width: 24px;
+        height: 24px;
+    }
+
+    .action-container{
+        width: 36px;
+        height: auto;
+        margin-left: auto;
+        padding-right: 0;
+    }
+
+    .action-item-button{
+        width: 32px;
+        height: 32px;
+    }
+} 

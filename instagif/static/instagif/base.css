@@ -86,7 +86,7 @@ html{
     width: 100%;
     /* height: 100vh; */
     max-width: var(--super-container-max-width);
-    min-width: var(--super-container-min-width);
+    /* min-width: var(--super-container-min-width); */
     min-height: calc(100vh - var(--top-bar-height) - 40px);
     margin-top: var(--top-bar-height);
     margin-left: auto;
@@ -112,7 +112,7 @@ html{
 #top-bar{
     width: 100%;
     max-width: var(--super-container-max-width);
-    min-width: var(--super-container-min-width);
+    /* min-width: var(--super-container-min-width); */
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -448,8 +448,6 @@ html{
 }
 
 
-
-
 #attributions-container{
     width: 100%;
     margin-top: auto;
@@ -474,3 +472,14 @@ html{
     margin-left: 5px;
     margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 400px) {
+    #small-search-input-popup-button-container{
+        width: auto;
+    }
+
+    #small-search-input{
+        flex-grow: 0;
+        width: calc(100% - 30px);
+    }
+} 

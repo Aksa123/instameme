@@ -1,5 +1,5 @@
 let project_items = document.querySelectorAll(".project-item")
-
+let flex_container = document.querySelector("#project-flex-container")
 
 
 function addHoverFunctionToProjectItems(){
@@ -16,8 +16,68 @@ function addHoverFunctionToProjectItems(){
             title_container.classList.toggle("project-item-title-container-hover", false)
             title.classList.toggle("project-item-title-hover", false)
         })
+
+        let desc_button = project_item.querySelector(".show-desc")
+        desc_button.show = false
+        desc_button.addEventListener("click", () => {
+            let desc = project_item.querySelector(".project-item-desc")
+            if (desc_button.show === false){
+                desc.classList.toggle("project-item-desc-hide", false)
+                desc_button.show = true
+            }
+            else{
+                desc.classList.toggle("project-item-desc-hide", true)
+                desc_button.show = false
+            }
+        })
+    })
+}
+
+function addDropdownFunction(){
+    let dropdown_button = document.querySelector("#dropdown-button")
+    let menu_container = document.querySelector("#menu-container")
+    dropdown_button.expand = false
+
+    dropdown_button.addEventListener("click", () => {
+        if (dropdown_button.expand === false){
+            menu_container.style.bottom = "0"
+            dropdown_button.expand = true
+        }
+        else{
+            menu_container.style.bottom = "200px"
+            dropdown_button.expand = false
+        }
+
     })
 }
 
 
+function addSlideProjectItem(){
+    let button_right = document.querySelector("#project-direction-right")
+    let button_left = document.querySelector("#project-direction-left")
+    let swipe_length = 300 // in px
+
+    button_right.addEventListener("click", () => {
+        flex_container.scrollBy({
+            top: 0,
+            left: swipe_length,
+            behavior: "smooth"
+        })
+    })
+    button_left.addEventListener("click", () => {
+        flex_container.scrollBy({
+            top: 0,
+            left: -1*swipe_length,
+            behavior: "smooth"
+        })
+    })
+    
+
+}
+
+
+
+
+addDropdownFunction()
 addHoverFunctionToProjectItems()
+addSlideProjectItem()
