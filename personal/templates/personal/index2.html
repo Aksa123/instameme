@@ -17,42 +17,53 @@
 <body>
     <div id="super-container">
         <div id="super-container-linear-gradient"></div>
-        <div id="topbar">
-            <div id="dropdown">
-                <button id="dropdown-button">Menu</button>
-                <div id="menu-container">
-                    <div id="topbar-item-home" class="topbar-item">
-                        <a href="#super-container" class="topbar-item-link">Home</a>
-                    </div>
-                    <div id="topbar-item-skills" class="topbar-item">
-                        <a href="#skills" class="topbar-item-link">Skills</a>
-                    </div>
-                    <div id="topbar-item-projects" class="topbar-item">
-                        <a href="#projects" class="topbar-item-link">Projects</a>
-                    </div>
-                    <div id="topbar-item-contact" class="topbar-item">
-                        <a href="#contact" class="topbar-item-link">Contact</a>
+        <div id="topbar-container">
+            <div id="topbar">
+                <div id="dropdown">
+                    <button id="dropdown-button">Menu</button>
+                    <div id="menu-container">
+                        <div id="topbar-item-home" class="topbar-item">
+                            <a href="#super-container" class="topbar-item-link">Home</a>
+                        </div>
+                        <div id="topbar-item-skills" class="topbar-item">
+                            <a href="#skills" class="topbar-item-link">Skills</a>
+                        </div>
+                        <div id="topbar-item-experiences" class="topbar-item">
+                            <a href="#experiences" class="topbar-item-link">Experiences</a>
+                        </div>
+                        <div id="topbar-item-projects" class="topbar-item">
+                            <a href="#projects" class="topbar-item-link">Projects</a>
+                        </div>
+                        <div id="topbar-item-contact" class="topbar-item">
+                            <a href="#contact" class="topbar-item-link">Contact</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div id="main">
-            <div id="about" class="main-item">
-                <div id="detail">
-                    <div id="title" class="title">
-                        Hello, 
-                        <br>
-                            <div id="title-add-container">
-                                <span id="title-add1"><i>I'm Aksa</i></span> <span id="title-add2"><i>I'm Aksa</i></span>
-                            </div>
+            <div class="main-item">
+                <div id="about" class="main-item-content">
+                    <div id="detail">
+                        <div id="title" class="title">
+                            Hello, 
+                            <br>
+                                <div id="title-add-container">
+                                    <span id="title-add1"><i>I'm Aksa</i></span> <span id="title-add2"><i>I'm Aksa</i></span>
+                                </div>
+                        </div>
+                        <div id="description">
+                            Database engineer with 5+ years of experience and proven knowledge of database design and full stack development. Skilled in SQL and providing logical solutions to high-level backend and data issues. Aiming to leverage my abilities to a professional level in your company.
+                        </div>
+                        <div id="resume">
+                            My resume: <a class="resume-link" href="{% static 'personal/downloadable/Resume_Pratyaksa.pdf' %}" >pdf</a> | <a class="resume-link" href="{% static 'personal//downloadable/Resume_Pratyaksa.docx' %}">docx</a>
+                        </div>
                     </div>
-                    <div id="description">
-                        Efficient database engineer with 2+ years of experience and proven knowledge of database design, application development, and Python programming. Aiming to leverage my skills to successfully fill the remote System QA Engineer role at your company.
+                    <div id="photo-container">
+                        <img src="{% static 'personal/photo.jpeg' %}" alt="my photo" id="photo">
+                        <div id="photo-gradient"></div>
                     </div>
-                </div>
-                <div id="photo-container">
-                    <img src="{% static 'personal/photo.jpeg' %}" alt="my photo" id="photo">
-                    <div id="photo-gradient"></div>
                 </div>
             </div>
             <div id="skills" class="main-item">
@@ -99,7 +110,7 @@
             <div id="experiences" class="main-item">
                 <div class="bg-container">
                     <div class="bg-linear-top"></div>
-                    <img src="{% static 'personal/work.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <img src="{% static 'personal/coffee.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
                     <div class="bg-linear-left"></div>
                     <div class="bg-linear-bottom"></div>
                 </div>
@@ -154,7 +165,7 @@
                                     </a>
                                     <div class="project-item-title2">Instameme <button class="show-desc">Detail</button></div>
                                     <div class="project-item-desc project-item-desc-hide">
-                                        Instagram clone.
+                                        A stripped-down Instagram clone. Responsive till 300px.
                                         <br>
                                         Stack used:
                                         <ul>
@@ -173,7 +184,7 @@
                                     </a>
                                     <div class="project-item-title2">None Yet <button class="show-desc">Detail</button></div>
                                     <div class="project-item-desc project-item-desc-hide">
-                                        :)
+                                        This is still a placeholder only.
                                     </div>
                                 </div>
                                 <div class="project-item">
@@ -185,7 +196,7 @@
                                     </a>
                                     <div class="project-item-title2">None Yet <button class="show-desc">Detail</button></div>
                                     <div class="project-item-desc project-item-desc-hide">
-                                        :)
+                                        This is still a placeholder only.
                                     </div>
 
                                 </div>
@@ -197,7 +208,7 @@
             <div id="contact" class="main-item">
                 <div class="bg-container">
                     <div class="bg-linear-top"></div>
-                    <img src="{% static 'personal/telephone.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <img src="{% static 'personal/telephone.jpg' %}" alt="mountain image" id="work-img" class="bg-img mirror">
                     <div class="bg-linear-left"></div>
                     <div class="bg-linear-bottom"></div>
                 </div>
@@ -222,7 +233,7 @@
             <div id="attributions" class="main-item">
                 <div class="bg-container">
                     <div class="bg-linear-top"></div>
-                    <img src="{% static 'personal/gift2.jpg' %}" alt="mountain image" id="work-img" class="bg-img">
+                    <img src="{% static 'personal/gift1.jpg' %}" alt="mountain image" id="work-img" class="bg-img mirror">
                     <div class="bg-linear-left"></div>
                     <div class="bg-linear-bottom"></div>
                 </div>
@@ -240,9 +251,8 @@
                         <li><a href="https://www.pexels.com/photo/iphone-on-table-1156684/">Photo by Arun Thomas from Pexels</a></li>
                         <li><a href="https://www.pexels.com/photo/black-rotary-telephone-on-white-surface-1416530/">Photo by chepté cormani from Pexels</a></li>
                         <li><a href="https://www.pexels.com/photo/photo-of-two-brown-wrapped-gifts-on-wooden-table-1693650/">Photo by Ylanite Koppens from Pexels</a></li>
-                        <li><a href="https://www.pexels.com/photo/three-assorted-color-boxes-3298036/"></a>
-                            Photo by Lucie Liz from Pexels
-                            </li>
+                        <li><a href="https://www.pexels.com/photo/three-assorted-color-boxes-3298036/"></a>Photo by Lucie Liz from Pexels</li>
+                        <li><a href="https://www.pexels.com/photo/light-bokeh-1006627/">Photo by Rahul Pandit from Pexels</a></li>
                     </ul>
                 </div>
             </div>

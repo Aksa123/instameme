@@ -75,11 +75,11 @@
                             </a>
                             {% endif %}
 
-                            <a href="{% url 'instagif:profile' %}" id="account-profile" class="account-dropdown-item-link">
+                            <a href="{% url 'instagif:profile' %}#profile" id="account-profile" class="account-dropdown-item-link">
                                 <img src="{% static 'instagif/account.png' %}" alt="" class="account-dropdown-item-img">
                                 <p class="account-dropdown-item-text">Profile</p>
                             </a>
-                            <a href="{% url 'instagif:profile' %}#saved-images-content" class="account-dropdown-item-link">
+                            <a href="{% url 'instagif:profile' %}#saved-images" class="account-dropdown-item-link">
                                 <img src="{% static 'instagif/unsaved.png' %}" alt="" class="account-dropdown-item-img">
                                 <p class="account-dropdown-item-text">Saved Images</p>
                             </a>

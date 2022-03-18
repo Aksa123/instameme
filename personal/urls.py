@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 app_name = "instagif"
 urlpatterns = [
-    path("", views.index, name="index")
+    path("", views.index, name="index"),
     
 
 

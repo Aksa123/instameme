@@ -4,13 +4,14 @@ let flex_container = document.querySelector("#project-flex-container")
 
 function addHoverFunctionToProjectItems(){
     project_items.forEach((project_item) => {
-        project_item.addEventListener("mouseover", () => {
+        let project_item_img = project_item.querySelector(".project-item-img")
+        project_item_img.addEventListener("mouseover", () => {
             let title_container = project_item.querySelector(".project-item-title-container")
             let title = project_item.querySelector(".project-item-title")
             title_container.classList.toggle("project-item-title-container-hover", true)
             title.classList.toggle("project-item-title-hover", true)
         })
-        project_item.addEventListener("mouseout", () => {
+        project_item_img.addEventListener("mouseout", () => {
             let title_container = project_item.querySelector(".project-item-title-container")
             let title = project_item.querySelector(".project-item-title")
             title_container.classList.toggle("project-item-title-container-hover", false)
@@ -44,7 +45,7 @@ function addDropdownFunction(){
             dropdown_button.expand = true
         }
         else{
-            menu_container.style.bottom = "200px"
+            menu_container.style.bottom = "250px"
             dropdown_button.expand = false
         }
 

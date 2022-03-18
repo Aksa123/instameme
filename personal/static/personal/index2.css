@@ -42,12 +42,11 @@ body{
 }
 
 #super-container{
-    max-width: 940px;
+    /* max-width: 940px; */
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 100px;
     background-color: var(--bg-color);
-    /* background-image: url('/static/personal/bg.jpg'); */
     position: relative;
 }
 
@@ -60,15 +59,22 @@ body{
     /* background: linear-gradient(transparent 20%, black ) */
 }
 
-#topbar{
+#topbar-container{
     width: 100%;
     height: 100px;
-    max-width: 940px;
     margin-left: auto;
     margin-right: auto;
     position: fixed;
     z-index: 99;
     background: linear-gradient(black, rgba(0, 0, 0, 0.7), transparent);
+}
+
+#topbar{
+    width: 100%;
+    height: 100%;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #dropdown{
@@ -130,12 +136,9 @@ body{
 }
 
 .main-item{
-    max-width: 800px;
     min-width: 300px;
     padding-top: 125px;
     padding-bottom: 125px;
-    margin-left: auto;
-    margin-right: auto;
     position: relative;
 }
 
@@ -218,6 +221,19 @@ body{
     line-height: 1.6;
 }
 
+#resume{
+    width: 90%;
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.resume-link{
+    color: lightseagreen;
+    font-weight: bolder;
+}
+
 .title-plus{
     margin-left: 15px;
     position: relative;
@@ -228,6 +244,9 @@ body{
 }
 
 .main-item-content{
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
     position: relative;
     z-index: 2;
 }
@@ -241,12 +260,16 @@ body{
     z-index: 1;
 }
 
+.mirror{
+    transform: scaleX(-1);
+}
+
 .bg-img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 .bg-linear-top{
@@ -397,6 +420,7 @@ body{
     bottom: 0;
     background-color: transparent;
     transition-duration: 500ms;
+    pointer-events: none;
 }
 
 
@@ -528,9 +552,6 @@ body{
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7), black);
 }
 
-#work-img{
-    transform: scaleX(-1);
-}
 
 .attributions-ul{
     margin-left: 20px;
@@ -566,7 +587,7 @@ body{
 
     #menu-container{
         display: block;
-        bottom: 200px;
+        bottom: 250px;
     }
 
     #dropdown-button{
@@ -611,10 +632,10 @@ body{
         text-align: center;
     }
 
-    #description{
+    #description, #resume{
         margin-right: auto;
         margin-left: auto;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     #title-add-container{
@@ -659,5 +680,11 @@ body{
 
     .project-item{
         width: 300px;
+    }
+}
+
+@media only screen and (max-width: 385px) {
+    #photo-container{
+        bottom: 200px;
     }
 }

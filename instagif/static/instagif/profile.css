@@ -8,7 +8,7 @@
 }
 
 #option-bar-flex{
-    width: 480px;
+    max-width: 480px;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -127,7 +127,7 @@
 
 
 #profile-form{
-    width: 400px;
+    max-width: 400px;
     /* height: 100%; */
     margin-left: auto;
     margin-right: auto;

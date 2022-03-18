@@ -114,15 +114,26 @@ function addSubmitEventListener(){
     })
 }
     
-
+function onPartChange(){
+    window.addEventListener("hashchange", (e) => {
+        e.preventDefault()                          // can't be prevented :(
+        if (window.location.hash === "#saved-images"){
+            slideToSavedGifs()
+        }
+        else if (window.location.hash === "#profile"){
+            slideToProfile()
+        }
+    })
+    
+}
 
 
 startProfilePage()
 changePasswordContainerDisplay()
 addSubmitEventListener()
+onPartChange()
 
 
-
-if (hash === "#saved-images-content"){
+if (hash === "#saved-images"){
     slideToSavedGifs()
 }
