@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'animelist.apps.AnimelistConfig',
     'instagif.apps.InstagifConfig',
     'personal.apps.PersonalConfig',
+    'shopifood.apps.ShopifoodConfig',
 
     'mod_wsgi.server',
 

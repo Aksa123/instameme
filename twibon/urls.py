@@ -24,5 +24,6 @@ urlpatterns = [
     
    
     path('instagif/', include('instagif.urls')),
+    path('shopifood/', include('shopifood.urls')),
     path('', include('personal.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

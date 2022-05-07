@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopifood - Index</title>
+
+    
+      
+</head>
+<body>
+    {% load static %}
+    <link rel="preload" href="{% static 'shopifood/vendor/vue.global.js' %}" as="script">
+    <link rel="preload" href="{% static 'shopifood/vendor/vue3-sfc-loader.js' %}" as="script">
+    
+    <div id="super-container">
+        {% verbatim %}
+        <div id="app">
+
+
+
+
+            <Home></Home>
+
+        </div>
+        {% endverbatim %}
+
+    </div>
+
+    <script>
+        new window.Vue({
+            el: '#app',
+            
+            components: {
+                'Home': window.httpVueLoader('Home.vue')
+            },
+            })
+
+    </script>
+
+
+
+    <div id="attributions-container">
+        <ul>
+            <li><a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by NajmunNahar - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/location" title="location icons">Location icons created by DinosoftLabs - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/location" title="location icons">Location icons created by Freepik - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/discount" title="discount icons">Discount icons created by Freepik - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/trophy" title="trophy icons">Trophy icons created by Freepik - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/open-24-hours" title="open 24 hours icons">Open 24 hours icons created by Smashicons - Flaticon</a></li>
+            <li><a href="https://www.flaticon.com/free-icons/new" title="new icons">New icons created by Pixel perfect - Flaticon</a></li>
+            <li>Photo by Anna Tukhfatullina Food Photographer/Stylist from Pexels</li>
+            <li>Photo by Narda Yescas from Pexels</li>
+            <li>Photo by Rajesh TP from Pexels</li>
+        </ul>
+    </div>
+
+    <!-- <script type="module" src="{% static 'shopifood/index.js' %}" ></script>
+    <script type="module" src="{% static 'shopifood/App.js' %}" ></script>
+    <script type="module" src="{% static 'shopifood/Home.js' %}" ></script>
+    <script type="module" src="{% static 'shopifood/Home.vue' %}" ></script>
+    <link rel="stylesheet" href="{% static 'shopifood/home.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Montserrat:wght@300&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet"> -->
+
+
+</body>
+</html>
