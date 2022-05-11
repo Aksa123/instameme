@@ -474,6 +474,10 @@ body{
     transition-duration: 200ms;
 }
 
+.project-item-desc-link{
+    color: greenyellow;
+}
+
 #project-direction-right{
     width: 50px;
     height: 50px;

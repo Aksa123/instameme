@@ -173,4 +173,4 @@ def force_download_pdfs(headers, path, url):
         headers['Content-Type'] = 'application/javascript; charset=utf-8'
         headers["Content-Disposition"] = 'inline; filename="main.647db1cd.js"'
 
-WHITENOISE_ADD_HEADERS_FUNCTION = force_download_pdfs
+# WHITENOISE_ADD_HEADERS_FUNCTION = force_download_pdfs

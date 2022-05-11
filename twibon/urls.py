@@ -26,7 +26,7 @@ urlpatterns = [
    
     path('instagif/', include('instagif.urls')),
     path('shopifood/', include('shopifood.urls')),
-    path('gameraptor/', include('gameraptor.urls')),
+    # path('gameraptor/', include('gameraptor.urls')),
     # path('gameraptor/', TemplateView.as_view(template_name='index.html')),
 
     path('', include('personal.urls')),
