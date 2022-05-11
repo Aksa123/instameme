@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from .development_status import DEVELOPMENT_STATUS
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'instagif.apps.InstagifConfig',
     'personal.apps.PersonalConfig',
     'shopifood.apps.ShopifoodConfig',
+    'gameraptor.apps.GameraptorConfig',
 
     'mod_wsgi.server',
 
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",               # whitenoise middleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +72,9 @@ ROOT_URLCONF = 'twibon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,3 +156,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+ja = os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
+print (ja)
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend/react_gameraptor/build"),
+    os.path.join(BASE_DIR, "frontend/react_gameraptor/build/static"),
+]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+def force_download_pdfs(headers, path, url):
+    if path.endswith('.js'):
+        headers['Content-Type'] = 'application/javascript; charset=utf-8'
+        headers["Content-Disposition"] = 'inline; filename="main.647db1cd.js"'
+
+WHITENOISE_ADD_HEADERS_FUNCTION = force_download_pdfs
