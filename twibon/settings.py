@@ -73,7 +73,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
+            # os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -161,8 +161,8 @@ ja = os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
 print (ja)
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "frontend/react_gameraptor/build"),
-    os.path.join(BASE_DIR, "frontend/react_gameraptor/build/static"),
+    # os.path.join(BASE_DIR, "frontend/react_gameraptor/build"),
+    # os.path.join(BASE_DIR, "frontend/react_gameraptor/build/static"),
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
