@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from .development_status import DEVELOPMENT_STATUS
+from .development_status import DEVELOPMENT_STATUS, SECRET_KEY as SAUCE
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)u95w!qhj4&9)ink7+g=8$91@b40h-x)(bdx&kj5&&^yux+k0z'
+SECRET_KEY = SAUCE or 'django-insecure-)u95w!qhj4&9)ink7+g=8$91@b40h-x)(bdx&kj5&&^yux+k0z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -73,7 +73,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
+            BASE_DIR / 'frontend_react' / 'gameraptor' / 'build',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -157,13 +157,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-ja = os.path.join(BASE_DIR, "frontend/react_gameraptor/build")
-print (ja)
+STATICFILES_DIRS = [BASE_DIR / 'frontend_react' / 'gameraptor' / 'build' / 'static']
 
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "frontend/react_gameraptor/build"),
-    # os.path.join(BASE_DIR, "frontend/react_gameraptor/build/static"),
-]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

@@ -6,7 +6,6 @@ from django.http import request, HttpResponse, JsonResponse
 
 def index(request):
 
-    # return HttpResponse("zzz")
     return render(request, "gameraptor/build/index.html")
 
 
