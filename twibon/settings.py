@@ -27,11 +27,11 @@ SECRET_KEY = SAUCE or 'django-insecure-)u95w!qhj4&9)ink7+g=8$91@b40h-x)(bdx&kj5&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['156.67.220.126']
+ALLOWED_HOSTS = ['156.67.220.126', ".aksasite.me"]
 
 if DEVELOPMENT_STATUS == True:
-    DEBUG = True
-    ALLOWED_HOSTS = []
+    DEBUG = False
+    ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -169,3 +169,57 @@ def force_download_pdfs(headers, path, url):
         headers["Content-Disposition"] = 'inline; filename="main.647db1cd.js"'
 
 # WHITENOISE_ADD_HEADERS_FUNCTION = force_download_pdfs
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'django.server': {
+            '()': 'django.utils.log.ServerFormatter',
+            'format': '[{server_time}] {message}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'django.server': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'django.server',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'file': {
+            'level': 'WARNING',                     # WARNING and up are recorded in log
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/django/error.log'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'mail_admins', 'file'],
+            'level': 'INFO',
+        },
+        'django.server': {
+            'handlers': ['django.server', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
+}

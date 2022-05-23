@@ -6,3 +6,4 @@ twibon/development_status.py
 media/
 collect_static/
 
+*.out

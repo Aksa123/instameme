@@ -3,6 +3,14 @@
 
 import multiprocessing
 
-bind = ["127.0.0.1:8000"]
+user = "aksa"
+group = "aksa"
+wsgi_app = "twibon.wsgi:application"
+loglevel = "debug"
+bind = ["0.0.0.0:8080"]
+reload = True
 workers = multiprocessing.cpu_count() * 2 + 1
-# accesslog = "-"
+accesslog = errorlog = "/var/log/gunicorn/dev.log"
+capture_output = True
+pidfile = "/var/run/gunicorn/dev.pid"
+# daemon = True
