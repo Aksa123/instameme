@@ -1,0 +1,2 @@
+1. make "gunicorn" directory in /var/run then give permission to the owner user
+2. start gunicorn with command: gunicorn -c gunicorn.conf.py twibon.wsgi

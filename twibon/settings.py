@@ -30,7 +30,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['156.67.220.126', ".aksasite.me"]
 
 if DEVELOPMENT_STATUS == True:
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
