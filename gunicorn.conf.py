@@ -2,6 +2,7 @@
 # https://docs.gunicorn.org/en/latest/settings.html#
 
 import multiprocessing
+from twibon.development_status import DEVELOPMENT_STATUS
 
 user = "aksa"
 group = "aksa"
@@ -13,4 +14,8 @@ workers = multiprocessing.cpu_count() * 2 + 1
 accesslog = errorlog = "/var/log/gunicorn/dev.log"
 capture_output = True
 pidfile = "/var/run/gunicorn/dev.pid"
-daemon = True
+
+if DEVELOPMENT_STATUS == True:
+    daemon = False
+else:
+    daemon =  True

@@ -229,13 +229,14 @@ function updateFollowStatusToAffectedReels(uploader_id, is_following){
 function intersectionObserverFunction(entries, observer){
     console.log("observed")
     page += 1
-    let url
-    if (reel_type === "all"){
-        url = new URL(window.location.origin + "/instagif/reel/all/?page=" + page)
-    }
-    else{
-        url = new URL(window.location.origin + "/instagif/reel/")
-    }
+    let url = new URL(window.location)
+    url.searchParams.append("page", page)
+    // if (reel_type === "all"){
+    //     url = new URL(window.location.origin + "/instagif/reel/all/?page=" + page)
+    // }
+    // else{
+    //     url = new URL(window.location.origin + "/instagif/reel/")
+    // }
     fetch(url, {
         method: "GET",
         headers: {

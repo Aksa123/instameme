@@ -524,19 +524,22 @@ def user_detail(request, id):
         "is_following": is_following
     })
 
-def reel_all(request):
+def reel_all(request, user_id=None):
     limit = 5
     page = int(request.GET.get("page", 1))
     if page < 1:
         page = 1
     offset = (page-1)*limit
     is_authenticated = request.user.is_authenticated
+    images = Image.objects.all()
+    if user_id is not None:
+        images = images.filter(user_id=user_id)
     if is_authenticated:
         user = request.user
-        images = Image.objects.all().exclude(user=user).order_by("-date_created")[offset:(offset+limit)]
+        images = images.exclude(user=user).order_by("-date_created")[offset:(offset+limit)]
     else:
         user = None
-        images = Image.objects.all().order_by("-date_created")[offset:(offset+limit)]
+        images = images.order_by("-date_created")[offset:(offset+limit)]
 
     i = 0
     for image in images:
