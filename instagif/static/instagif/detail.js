@@ -71,19 +71,6 @@ save_button.addEventListener("click", () => {
 })
 
 function appendNewComment(data){
-    
-    // <div class="content-item-comment-item">
-    //     <div class="content-item-comment-item-user-avatar">
-    //         <img class="content-item-comment-item-img" src="{% static 'instagif/like.png' %}" alt="user avatar img">
-    //     </div>
-    //     <div class="content-item-comment-item-content">
-    //         <div class="content-item-comment-item-username-date-container">
-    //             <div class="content-item-comment-item-username">Username Bruh</div>
-    //             <div class="content-item-comment-item-date">27 Jun 2022</div>
-    //         </div>
-    //         <div class="content-item-comment-item-text">Hello this is my first comment.</div>
-    //     </div>
-    // </div> 
 
     let content_item_comment = document.createElement("DIV")
     content_item_comment.classList.add("content-item-comment-item")
